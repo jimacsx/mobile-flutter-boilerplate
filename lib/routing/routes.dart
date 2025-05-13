@@ -10,4 +10,5 @@ const Map<String, String> privateRoutes = {
   'accounts': '/accounts',
   'buttons': '/buttons',
   'cards': '/cards',
+  'progress': '/progress',
 };

@@ -18,6 +18,13 @@ class MenuItem {
 }
 
 final appMenuItems = <MenuItem>[
+
+  MenuItem(
+    title: 'Login',
+    subtitle: 'Pantalla login',
+    link: publicRoutes['login']!,
+    icon: Icons.login
+  ),
   
   MenuItem(
     title: 'Botones',
@@ -34,10 +41,10 @@ final appMenuItems = <MenuItem>[
   ),
 
   MenuItem(
-    title: 'Login',
-    subtitle: 'Pantalla login',
-    link: publicRoutes['login']!,
-    icon: Icons.login
+    title: 'ProgressIndicators',
+    subtitle: 'Generales y controlados',
+    link: privateRoutes['progress']!,
+    icon: Icons.refresh_rounded
   ),
 
 ];
