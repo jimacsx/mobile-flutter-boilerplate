@@ -60,4 +60,11 @@ final appMenuItems = <MenuItem>[
     link: privateRoutes['animated']!,
     icon: Icons.check_box_outline_blank_rounded
   ),
+
+  MenuItem(
+    title: 'UI Controls + Tiles',
+    subtitle: 'Una serie de controles de Flutter',
+    link: privateRoutes['ui-controls']!,
+    icon: Icons.car_rental_outlined
+  ),
 ];

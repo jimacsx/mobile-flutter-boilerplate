@@ -13,4 +13,5 @@ const Map<String, String> privateRoutes = {
   'progress': '/progress',
   'snackbars': '/snackbars',
   'animated': '/animated',
+  'ui-controls': '/ui-controls',
 };
