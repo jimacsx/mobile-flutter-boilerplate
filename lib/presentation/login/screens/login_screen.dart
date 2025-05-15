@@ -2,46 +2,61 @@ import 'package:banking_flutter_app/presentation/core/shared_widgets/widgets.dar
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
-class LoginScreen extends StatelessWidget {
-
+class LoginScreen extends StatefulWidget {
   static const String name = 'login_screen';
-
   const LoginScreen({super.key});
+
+  @override
+  State<LoginScreen> createState() => _LoginScreenState();
+}
+
+class _LoginScreenState extends State<LoginScreen> {
+  final _formKey = GlobalKey<FormState>();
+  String _email = "";
+  String _password = "";
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: const Text('Login Screen')),
-      body: const _FormView(),
+      body: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: Form(
+          key: _formKey,
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              EmailField(
+                onSaved: (value) {
+                  _email = value!;
+                },
+              ),
+              SizedBox(height: 20),
+              //Password field
+              PasswordField(
+                onSaved: (value) {
+                  _password = value!;
+                },
+              ),
+              SizedBox(height: 20),
+              ElevatedButton(
+                onPressed: () {
+                  if (_formKey.currentState!.validate()) {
+                    _formKey.currentState!.save();
+                    debugPrint("Registered with Username: $_email, Password: $_password");
+                  }
+                },
+                child: Text('TEST'),
+              ),
+            ],
+          ),
+        ),
+      ),
       floatingActionButton: FloatingActionButton(
         child: const Icon(Icons.arrow_back_ios_new_rounded),
         onPressed: () {
           context.pop();
         },
-      ),
-    );
-  }
-}
-
-class _FormView extends StatelessWidget {
-  const _FormView();
-
-  @override
-  Widget build(BuildContext context) {
-
-    final colors = Theme.of(context).colorScheme;
-
-    return SizedBox(
-      width: double.infinity, // takes as much width as possible from the parent widget
-      child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 20),
-        child: Wrap(
-          spacing: 10,
-          alignment: WrapAlignment.center,
-          children: [
-            Input()
-          ],
-        ),
       ),
     );
   }

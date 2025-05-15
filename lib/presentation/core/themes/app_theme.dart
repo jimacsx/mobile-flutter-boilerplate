@@ -1,3 +1,4 @@
+import 'package:banking_flutter_app/presentation/core/themes/input_theme.dart';
 import 'package:flutter/material.dart';
 
 const colorList = <Color>[
@@ -29,6 +30,7 @@ class AppTheme {
         colorSchemeSeed: colorList[selectedColor],
         appBarTheme: const AppBarTheme(
           centerTitle: false
-        )
+        ),
+        inputDecorationTheme: InputTheme().theme(),
       );
 }
