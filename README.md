@@ -1,8 +1,8 @@
-# banking_flutter_app
+# fintech-mobile-flutter-boilerplate
 
-A new Flutter project.
+This Flutter boilerplate project is built as a solid and scalable foundation for developing mobile application in the fintech sector.
 
-# Architecture
+## Architecture
 
 Based on the *Separation of Concerns (SoC)* design principle—which promotes dividing a program into distinct sections by encapsulating information within components that expose well-defined interfaces—this project uses the MVVM architecture pattern, following recommendations from the [Flutter architecture](https://docs.flutter.dev/app-architecture/guide) documentation.
 
@@ -15,11 +15,14 @@ This projetc is split into two broad layers, the UI layer and the Data layer.
   * **View models**: contains the logic that converts app data into UI state.
 
 ### Data layer
+
   * **Repositories**: responsible for polling data from services, and transforming that raw data into domain models.
   * **Services**: wrap API endpoints and expose asynchronous response objects.
 
 **Architecture diagram**
 ![Architecture diagram](/assets/architecture_app.png)
+
+### Package structure
 
 The following is how the code is organized combining organization by *feature* and by *type*, Data layer aren't tied to a single feature, while UI layer are.
 
@@ -62,3 +65,7 @@ test
 └─── utils
 
 ```
+
+## Tecnologies
+  - [Flutter](https://flutter.dev/) 3.29.2
+  - [Dart](https://dart.dev/) 3.7.2
