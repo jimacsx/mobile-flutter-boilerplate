@@ -67,4 +67,11 @@ final appMenuItems = <MenuItem>[
     link: privateRoutes['ui-controls']!,
     icon: Icons.car_rental_outlined
   ),
+
+  MenuItem(
+    title: 'Introducción a la aplicación',
+    subtitle: 'Pequeño tutorial introductorio',
+    link: privateRoutes['tutorial']!,
+    icon: Icons.accessible_rounded
+  ),
 ];
