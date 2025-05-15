@@ -41,10 +41,16 @@ final appMenuItems = <MenuItem>[
   ),
 
   MenuItem(
-    title: 'ProgressIndicators',
+    title: 'Progress Indicators',
     subtitle: 'Generales y controlados',
     link: privateRoutes['progress']!,
     icon: Icons.refresh_rounded
   ),
 
+  MenuItem(
+    title: 'Snackbars y diálogos',
+    subtitle: 'Indicadores en pantalla',
+    link: privateRoutes['snackbars']!,
+    icon: Icons.info_outline
+  ),
 ];
