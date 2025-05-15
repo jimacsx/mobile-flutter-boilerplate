@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
 
+// TODO: Update this widget once we receive the Figma, to centralize the input logic in it.
 class CustomField extends StatelessWidget {
 
-  final String? label;
-  final String? hint;
-  final String? errorMessage;
   final bool obscureText;
   final Function(String)? onSaved;
   final String? Function(String?)? validator;
@@ -13,9 +11,6 @@ class CustomField extends StatelessWidget {
 
   const CustomField({
     super.key, 
-    this.label, 
-    this.hint, 
-    this.errorMessage, 
     this.obscureText = false,
     this.onSaved, 
     this.validator, 

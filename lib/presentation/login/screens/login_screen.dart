@@ -26,6 +26,14 @@ class _LoginScreenState extends State<LoginScreen> {
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
+              CustomField(
+                decoration: InputDecoration(
+                  labelText: 'Custom field',
+                  hintText: 'test',
+                  helperText: '',
+                ),
+              ),
+              SizedBox(height: 20),
               EmailField(
                 onSaved: (value) {
                   _email = value!;

@@ -14,7 +14,6 @@ class _EmailFieldState extends State<EmailField> {
     r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$',
   );
 
-
   @override
   Widget build(BuildContext context) {
     return CustomField(
@@ -26,7 +25,7 @@ class _EmailFieldState extends State<EmailField> {
       ),
       validator: (s) {
         if (s!.isEmpty) return "This field is required";
-        if (emailRegExp.hasMatch(s)) return "Enter a valid format";
+        if (!emailRegExp.hasMatch(s)) return "Enter a valid format";
         return null;
       },
       onSaved: widget.onSaved,
