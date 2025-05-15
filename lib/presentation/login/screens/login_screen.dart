@@ -32,6 +32,10 @@ class _LoginScreenState extends State<LoginScreen> {
                   hintText: 'test',
                   helperText: '',
                 ),
+                validator: (value) {
+                  if(value!.isEmpty) return 'This field is required';
+                  return '';
+                }
               ),
               SizedBox(height: 20),
               EmailField(
