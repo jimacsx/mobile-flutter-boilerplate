@@ -7,7 +7,7 @@ final appRouter = GoRouter(
   initialLocation: '/',
   routes: [
     GoRoute(
-      path: privateRoutes['bottombar']!,
+      path: privateRoutes['bottom-bar']!,
       name: BottomBarScreen.name,
       builder: (context, state) => const BottomBarScreen(),
     ),

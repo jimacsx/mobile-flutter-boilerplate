@@ -22,7 +22,7 @@ final appMenuItems = <MenuItem>[
   MenuItem(
     title: 'Bottom Navigation Bar',
     subtitle: 'BottomBar example',
-    link: privateRoutes['bottombar']!,
+    link: privateRoutes['bottom-bar']!,
     icon: Icons.border_bottom
   ),
 
