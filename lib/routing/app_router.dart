@@ -7,6 +7,11 @@ final appRouter = GoRouter(
   initialLocation: '/',
   routes: [
     GoRoute(
+      path: privateRoutes['bottombar']!,
+      name: BottomBar.name,
+      builder: (context, state) => const BottomBar(),
+    ),
+    GoRoute(
       path: privateRoutes['profile']!,
       name: ProfileScreen.name,
       builder: (context, state) => const ProfileScreen(),

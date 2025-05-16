@@ -7,6 +7,7 @@ const Map<String, String> publicRoutes = {
 
 const Map<String, String> privateRoutes = {
   'home': '/',
+  'bottombar': '/bottombar',
   'profile': '/profile',
   'settings': '/settings',
   'drawer': '/drawer',

@@ -20,6 +20,13 @@ class MenuItem {
 final appMenuItems = <MenuItem>[
 
   MenuItem(
+    title: 'Bottom Navigation Bar',
+    subtitle: 'BottomBar example',
+    link: privateRoutes['bottombar']!,
+    icon: Icons.border_bottom
+  ),
+
+  MenuItem(
     title: 'Drawer',
     subtitle: 'Drawer example',
     link: privateRoutes['drawer']!,
