@@ -33,4 +33,11 @@ final appMenuItems = <MenuItem>[
     icon: Icons.credit_card
   ),
 
+  MenuItem(
+    title: 'Login',
+    subtitle: 'Pantalla login',
+    link: publicRoutes['login']!,
+    icon: Icons.login
+  ),
+
 ];
