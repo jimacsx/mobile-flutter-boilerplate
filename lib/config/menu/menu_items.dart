@@ -18,6 +18,13 @@ class MenuItem {
 }
 
 final appMenuItems = <MenuItem>[
+
+  MenuItem(
+    title: 'Login',
+    subtitle: 'Pantalla login',
+    link: publicRoutes['login']!,
+    icon: Icons.login
+  ),
   
   MenuItem(
     title: 'Botones',
@@ -34,10 +41,37 @@ final appMenuItems = <MenuItem>[
   ),
 
   MenuItem(
-    title: 'Login',
-    subtitle: 'Pantalla login',
-    link: publicRoutes['login']!,
-    icon: Icons.login
+    title: 'Progress Indicators',
+    subtitle: 'Generales y controlados',
+    link: privateRoutes['progress']!,
+    icon: Icons.refresh_rounded
   ),
 
+  MenuItem(
+    title: 'Snackbars y diálogos',
+    subtitle: 'Indicadores en pantalla',
+    link: privateRoutes['snackbars']!,
+    icon: Icons.info_outline
+  ),
+
+  MenuItem(
+    title: 'Animated container',
+    subtitle: 'Stateful widget animado',
+    link: privateRoutes['animated']!,
+    icon: Icons.check_box_outline_blank_rounded
+  ),
+
+  MenuItem(
+    title: 'UI Controls + Tiles',
+    subtitle: 'Una serie de controles de Flutter',
+    link: privateRoutes['ui-controls']!,
+    icon: Icons.car_rental_outlined
+  ),
+
+  MenuItem(
+    title: 'Introducción a la aplicación',
+    subtitle: 'Pequeño tutorial introductorio',
+    link: privateRoutes['tutorial']!,
+    icon: Icons.accessible_rounded
+  ),
 ];
