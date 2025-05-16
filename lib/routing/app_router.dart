@@ -1,4 +1,3 @@
-import 'package:banking_flutter_app/presentation/login/screens/login_screen.dart';
 import 'package:banking_flutter_app/routing/routes.dart';
 import 'package:banking_flutter_app/presentation/home/screens/screens.dart';
 import 'package:go_router/go_router.dart';
@@ -7,6 +6,21 @@ import 'package:go_router/go_router.dart';
 final appRouter = GoRouter(
   initialLocation: '/',
   routes: [
+    GoRoute(
+      path: privateRoutes['profile']!,
+      name: ProfileScreen.name,
+      builder: (context, state) => const ProfileScreen(),
+    ),
+    GoRoute(
+      path: privateRoutes['settings']!,
+      name: SettingsScreen.name,
+      builder: (context, state) => const SettingsScreen(),
+    ),
+    GoRoute(
+      path: privateRoutes['drawer']!,
+      name: DrawerScreen.name,
+      builder: (context, state) => const DrawerScreen(),
+    ),
     GoRoute(
       path: publicRoutes['login']!,
       name: LoginScreen.name,

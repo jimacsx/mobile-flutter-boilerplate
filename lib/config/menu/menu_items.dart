@@ -20,6 +20,13 @@ class MenuItem {
 final appMenuItems = <MenuItem>[
 
   MenuItem(
+    title: 'Drawer',
+    subtitle: 'Drawer example',
+    link: privateRoutes['drawer']!,
+    icon: Icons.menu
+  ),
+
+  MenuItem(
     title: 'Login',
     subtitle: 'Pantalla login',
     link: publicRoutes['login']!,
