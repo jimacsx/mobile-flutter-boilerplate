@@ -1,5 +1,5 @@
 import 'package:banking_flutter_app/routing/app_router.dart';
-import 'package:banking_flutter_app/presentation/core/themes/app_theme.dart';
+import 'package:banking_flutter_app/presentation/themes/app_theme.dart';
 import 'package:flutter/material.dart';
 
 void main() {

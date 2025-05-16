@@ -1,4 +1,4 @@
-import 'package:banking_flutter_app/presentation/core/shared_widgets/custom_field.dart';
+import 'package:banking_flutter_app/presentation/shared_widgets/custom_field.dart';
 import 'package:flutter/material.dart';
 
 class PasswordField extends StatefulWidget{
