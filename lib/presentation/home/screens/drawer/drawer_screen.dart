@@ -1,3 +1,4 @@
+import 'package:banking_flutter_app/routing/routes.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
@@ -24,7 +25,7 @@ class DrawerScreen extends StatelessWidget {
               title: Text("Profile", style: TextStyle(color: Colors.white)),
               onTap: () {
                 context.pop();
-                context.push('/profile');
+                context.push(privateRoutes['/profile']!);
               },
             ),
             ListTile(
@@ -32,7 +33,7 @@ class DrawerScreen extends StatelessWidget {
               title: Text('Settings',  style: TextStyle(color: Colors.white)),
               onTap: () {
                 context.pop();
-                context.push('/settings');
+                context.push(privateRoutes['/settings']!);
               },
             ),
           ],
