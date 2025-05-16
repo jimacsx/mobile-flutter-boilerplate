@@ -8,8 +8,8 @@ final appRouter = GoRouter(
   routes: [
     GoRoute(
       path: privateRoutes['bottombar']!,
-      name: BottomBar.name,
-      builder: (context, state) => const BottomBar(),
+      name: BottomBarScreen.name,
+      builder: (context, state) => const BottomBarScreen(),
     ),
     GoRoute(
       path: privateRoutes['profile']!,

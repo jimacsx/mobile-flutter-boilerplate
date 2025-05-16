@@ -1,5 +1,5 @@
 // Barrel file
-export 'package:banking_flutter_app/presentation/home/screens/navigation/bottombar_screen.dart';
+export 'package:banking_flutter_app/presentation/home/screens/navigation/bottom_bar_screen.dart';
 export 'package:banking_flutter_app/presentation/home/screens/navigation/profile_screen.dart';
 export 'package:banking_flutter_app/presentation/home/screens/navigation/settings_screen.dart';
 export 'package:banking_flutter_app/presentation/home/screens/navigation/drawer_screen.dart';

@@ -1,16 +1,16 @@
 import 'package:banking_flutter_app/presentation/home/screens/screens.dart';
 import 'package:flutter/material.dart';
 
-class BottomBar extends StatefulWidget {
+class BottomBarScreen extends StatefulWidget {
   static const String name = 'bottombar_screen';
 
-  const BottomBar({super.key});
+  const BottomBarScreen({super.key});
 
   @override
-  State<BottomBar> createState() => _BottomBarState();
+  State<BottomBarScreen> createState() => _BottomBarState();
 }
 
-class _BottomBarState extends State<BottomBar> {
+class _BottomBarState extends State<BottomBarScreen> {
   int _selectedIndex = 0;
 
   void _navigationBottomBar(int count) {
