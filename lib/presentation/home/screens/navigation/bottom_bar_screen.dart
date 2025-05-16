@@ -2,7 +2,7 @@ import 'package:banking_flutter_app/presentation/home/screens/screens.dart';
 import 'package:flutter/material.dart';
 
 class BottomBarScreen extends StatefulWidget {
-  static const String name = 'bottom-bar_screen';
+  static const String name = 'bottom_bar_screen';
 
   const BottomBarScreen({super.key});
 
