@@ -25,7 +25,7 @@ class DrawerScreen extends StatelessWidget {
               title: Text("Profile", style: TextStyle(color: Colors.white)),
               onTap: () {
                 context.pop();
-                context.push(privateRoutes['/profile']!);
+                context.push(privateRoutes['profile']!);
               },
             ),
             ListTile(
@@ -33,7 +33,7 @@ class DrawerScreen extends StatelessWidget {
               title: Text('Settings',  style: TextStyle(color: Colors.white)),
               onTap: () {
                 context.pop();
-                context.push(privateRoutes['/settings']!);
+                context.push(privateRoutes['settings']!);
               },
             ),
           ],
