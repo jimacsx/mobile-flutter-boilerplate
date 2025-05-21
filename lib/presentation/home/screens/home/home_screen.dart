@@ -1,4 +1,5 @@
 import 'package:banking_flutter_app/config/menu/menu_items.dart';
+import 'package:banking_flutter_app/presentation/home/widgets/widgets.dart';
 // import 'package:banking_flutter_app/presentation/screens/screens.dart';
 // import 'package:banking_flutter_app/presentation/screens/buttons/buttons_screen.dart';
 import 'package:flutter/material.dart';
@@ -11,9 +12,14 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
+    final scaffoldKey = GlobalKey<ScaffoldState>(); // scaffoldKey has the reference of the current state of the scaffold
+
     return Scaffold(
+      key: scaffoldKey,
       appBar: AppBar(title: const Text('Flutter + Material 3')),
       body: const _HomeView(),
+      drawer: SideMenu(scaffoldKey: scaffoldKey),
     );
   }
 }
