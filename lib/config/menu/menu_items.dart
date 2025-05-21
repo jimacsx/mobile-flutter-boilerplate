@@ -88,4 +88,11 @@ final appMenuItems = <MenuItem>[
     link: privateRoutes['tutorial']!,
     icon: Icons.accessible_rounded
   ),
+
+  MenuItem(
+    title: 'InfiniteScroll y Pull',
+    subtitle: 'Listas infinitas y pull to refresh',
+    link: privateRoutes['infinite']!,
+    icon: Icons.list_alt_rounded
+  ),
 ];

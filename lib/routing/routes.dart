@@ -19,4 +19,5 @@ const Map<String, String> privateRoutes = {
   'animated': '/animated',
   'ui-controls': '/ui-controls',
   'tutorial': '/tutorial',
+  'infinite': '/infinite',
 };
