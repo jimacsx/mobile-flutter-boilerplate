@@ -27,6 +27,11 @@ final appRouter = GoRouter(
       builder: (context, state) => const DrawerScreen(),
     ),
     GoRoute(
+      path: privateRoutes['counter-riverpod']!,
+      name: CounterScreen.name,
+      builder: (context, state) => const CounterScreen(),
+    ),
+    GoRoute(
       path: publicRoutes['login']!,
       name: LoginScreen.name,
       builder: (context, state) => const LoginScreen(),

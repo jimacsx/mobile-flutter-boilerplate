@@ -34,6 +34,13 @@ final appMenuItems = <MenuItem>[
   ),
 
   MenuItem(
+    title: 'Riverpod Counter',
+    subtitle: 'Introducción a Riverpod',
+    link: privateRoutes['counter-riverpod']!,
+    icon: Icons.add
+  ),
+ 
+  MenuItem(
     title: 'Login',
     subtitle: 'Pantalla login',
     link: publicRoutes['login']!,
