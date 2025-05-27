@@ -39,6 +39,13 @@ final appMenuItems = <MenuItem>[
     link: privateRoutes['counter-riverpod']!,
     icon: Icons.add
   ),
+
+  MenuItem(
+    title: 'Cambiar tema',
+    subtitle: 'Cambiar tema de la aplicación',
+    link: privateRoutes['theme-changer']!,
+    icon: Icons.color_lens_outlined
+  ),
  
   MenuItem(
     title: 'Login',

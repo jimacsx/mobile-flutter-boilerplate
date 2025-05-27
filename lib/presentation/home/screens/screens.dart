@@ -12,5 +12,6 @@ export 'package:banking_flutter_app/presentation/home/screens/navigation/profile
 export 'package:banking_flutter_app/presentation/home/screens/navigation/settings_screen.dart';
 export 'package:banking_flutter_app/presentation/home/screens/progress/progress_screen.dart';
 export 'package:banking_flutter_app/presentation/home/screens/snackbar/snackbar_screen.dart';
+export 'package:banking_flutter_app/presentation/home/screens/theme_changer/theme_changer_screen.dart';
 export 'package:banking_flutter_app/presentation/home/screens/ui_controls/ui_controls_screen.dart';
 export 'package:banking_flutter_app/presentation/login/screens/login_screen.dart';

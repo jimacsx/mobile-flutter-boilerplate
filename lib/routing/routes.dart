@@ -21,4 +21,5 @@ const Map<String, String> privateRoutes = {
   'tutorial': '/tutorial',
   'infinite': '/infinite',
   'counter-riverpod': '/counter-riverpod',
+  'theme-changer': '/theme-changer',
 };
