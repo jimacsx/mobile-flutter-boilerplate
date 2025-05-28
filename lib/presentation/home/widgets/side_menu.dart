@@ -47,11 +47,11 @@ class _SideMenuState extends State<SideMenu> {
       children: [
         Padding(
           padding: EdgeInsets.fromLTRB(28, hasNotch ? 0 : 20, 16, 10),
-          child: const Text('Main'),
+          child: const Text('Screens'),
         ),
 
         ...appMenuItems
-            .sublist(0, 3) // gets the first 3 items from appMenuItems
+            .sublist(0, 5) // gets the first 3 items from appMenuItems
             .map(
               (menuItem) => NavigationDrawerDestination(
                 icon: Icon(menuItem.icon),
@@ -67,11 +67,11 @@ class _SideMenuState extends State<SideMenu> {
 
         const Padding(
           padding: EdgeInsets.fromLTRB(28, 10, 16, 10),
-          child: Text('More options'),
+          child: Text('Widgets'),
         ),
 
         ...appMenuItems
-            .sublist(3)
+            .sublist(5)
             .map(
               (menuItem) => NavigationDrawerDestination(
                 icon: Icon(menuItem.icon),

@@ -15,22 +15,34 @@ const colorList = <Color>[
 
 class AppTheme {
   final int selectedColor;
+  final bool isDarkMode;
 
   /// * constructor
-  AppTheme({this.selectedColor = 0})
-    : assert(selectedColor >= 0,
-      'Selected color must be greater than 0'),
-      assert(selectedColor < colorList.length,
-        'Selected color must be less or equal than ${colorList.length - 1}'
+  AppTheme({
+    this.selectedColor = 0,
+    this.isDarkMode = false,
+  })
+    : assert(selectedColor >= 0, 'Selected color must be greater than 0'),
+      assert(
+        selectedColor < colorList.length,
+        'Selected color must be less or equal than ${colorList.length - 1}',
       );
 
-  ThemeData getTheme() =>
-      ThemeData(
-        useMaterial3: true,
-        colorSchemeSeed: colorList[selectedColor],
-        appBarTheme: const AppBarTheme(
-          centerTitle: false
-        ),
-        inputDecorationTheme: InputTheme().theme(),
-      );
+  ThemeData getTheme() => ThemeData(
+    useMaterial3: true,
+    brightness: isDarkMode ? Brightness.dark : Brightness.light,
+    colorSchemeSeed: colorList[selectedColor],
+    appBarTheme: const AppBarTheme(centerTitle: false),
+    inputDecorationTheme: InputTheme().theme(),
+  );
+
+  // * copyWith returns an instance of AppTheme
+  AppTheme copyWith({int? selectedColor, bool? isDarkMode}) => AppTheme(
+    selectedColor: selectedColor ?? this.selectedColor,
+    isDarkMode: isDarkMode ?? this.isDarkMode,
+  );
+  // The copyWith is a method used to copy the instance of the “class” and
+  // allows to keep the immutable properties of the ‘class’ since when 
+  // something changes in the "state" it creates a new state that is 
+  // based on the previous one.
 }

@@ -20,4 +20,6 @@ const Map<String, String> privateRoutes = {
   'ui-controls': '/ui-controls',
   'tutorial': '/tutorial',
   'infinite': '/infinite',
+  'counter-riverpod': '/counter-riverpod',
+  'theme-changer': '/theme-changer',
 };
