@@ -4,7 +4,7 @@ export 'package:banking_flutter_app/presentation/home/screens/app_tutorial/app_t
 export 'package:banking_flutter_app/presentation/home/screens/buttons/buttons_screen.dart';
 export 'package:banking_flutter_app/presentation/home/screens/cards/cards_screen.dart';
 export 'package:banking_flutter_app/presentation/home/screens/counter/counter_screen.dart';
-export 'package:banking_flutter_app/presentation/home/screens/home/home_screen.dart';
+// export 'package:banking_flutter_app/presentation/home/screens/home/home_screen.dart';
 export 'package:banking_flutter_app/presentation/home/screens/infinite_scroll/infinite_scroll_screen.dart';
 export 'package:banking_flutter_app/presentation/home/screens/navigation/bottom_bar_screen.dart';
 export 'package:banking_flutter_app/presentation/home/screens/navigation/drawer_screen.dart';
