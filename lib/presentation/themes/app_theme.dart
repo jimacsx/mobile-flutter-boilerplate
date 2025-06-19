@@ -1,5 +1,6 @@
 import 'package:banking_flutter_app/presentation/themes/input_theme.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 const colorList = <Color>[
   Colors.blue,
@@ -34,6 +35,7 @@ class AppTheme {
     colorSchemeSeed: colorList[selectedColor],
     appBarTheme: const AppBarTheme(centerTitle: false),
     inputDecorationTheme: InputTheme().theme(),
+    textTheme: GoogleFonts.robotoTextTheme(),
   );
 
   // * copyWith returns an instance of AppTheme
