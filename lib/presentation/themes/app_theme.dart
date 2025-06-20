@@ -1,6 +1,6 @@
-import 'package:banking_flutter_app/presentation/themes/input_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:banking_flutter_app/config/theme/input_theme.dart';
 
 const colorList = <Color>[
   Colors.blue,

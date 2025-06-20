@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'package:banking_flutter_app/presentation/providers/providers.dart';
+import 'package:banking_flutter_app/config/router/app_router.dart';
 import 'package:banking_flutter_app/config/theme/app_theme.dart';
-import 'package:banking_flutter_app/routing/app_router.dart';
 
 void main() {
   runApp(

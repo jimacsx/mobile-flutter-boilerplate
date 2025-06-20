@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-
-import 'package:banking_flutter_app/presentation/home/widgets/widgets.dart';
 import 'package:banking_flutter_app/presentation/providers/providers.dart';
+
+import 'widgets/side_menu.dart';
 
 class HomeScreen extends ConsumerWidget {
   static const String name = 'home_screen';
