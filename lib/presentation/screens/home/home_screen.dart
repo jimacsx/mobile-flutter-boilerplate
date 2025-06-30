@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:banking_flutter_app/presentation/providers/providers.dart';
 
-import 'widgets/side_menu.dart';
+import 'package:banking_flutter_app/presentation/providers/providers.dart';
+import 'package:banking_flutter_app/presentation/screens/home/widgets/widgets.dart';
 
 class HomeScreen extends ConsumerWidget {
   static const String name = 'home_screen';
@@ -13,25 +13,58 @@ class HomeScreen extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     // scaffoldKey has the reference of the current state of the scaffold
     final scaffoldKey = GlobalKey<ScaffoldState>();
-    final isDarkMode = ref.watch(themeNotifierProvider).isDarkMode;
 
     return Scaffold(
       key: scaffoldKey,
-      appBar: AppBar(
-        title: Center(child: Image.asset('assets/images/logo.png', height: 28)),
-        actions: [
-          IconButton(
-            icon: Icon(
-              isDarkMode ? Icons.dark_mode_outlined : Icons.light_mode_outlined,
-            ),
-            onPressed: () {
-              ref.read(themeNotifierProvider.notifier).toggleDarkMode();
-            },
-          ),
-        ],
-      ),
-      body: const Center(child: Text('Bankify Home Screen')),
-      drawer: SideMenu(scaffoldKey: scaffoldKey),
+      body: _HomeView(scaffoldKey: scaffoldKey),
+      endDrawer: SideMenu(scaffoldKey: scaffoldKey),
     );
   }
 }
+
+class _HomeView extends ConsumerWidget {
+  final GlobalKey<ScaffoldState> scaffoldKey;
+
+  const _HomeView({required this.scaffoldKey});
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final isDarkMode = ref.watch(themeNotifierProvider).isDarkMode;
+
+    return CustomScrollView(
+      // Slivers
+      //  are special Widgets for Scroll behavior
+      //  always work with the CustomScrollView
+      //  and instead of having a child we have slivers: []
+      // A Sliver is a Widget that works directly with the ScrollView
+      slivers: [
+        CustomSliverAppbar(
+          scaffoldKey: scaffoldKey,
+          isDarkMode: isDarkMode,
+          toggleDarkMode: () {
+            ref.read(themeNotifierProvider.notifier).toggleDarkMode();
+          },
+        ),
+        // SliverList requests a delegate
+        // delegate: is the function used to create the slivers
+        SliverList(
+          delegate: SliverChildBuilderDelegate((context, index) {
+            return Column(
+              children: [
+                Container(
+                  height: 800,
+                  color: Colors.amberAccent,
+                  child: const Center(child: Text('Bankify Home Screen')),
+                ),
+                Container(height: 800, color: Colors.blueAccent),
+                Container(height: 800, color: Colors.purpleAccent),
+              ],
+            );
+          }, childCount: 1),
+        ),
+      ],
+    );
+  }
+}
+
+
