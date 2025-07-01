@@ -105,3 +105,12 @@ test
 ├─── ui
 └─── utils
 ```
+
+---
+
+## Environments
+
+1. Copy the .env.template and rename it to .env
+2. Change the value of environment variables
+
+---
