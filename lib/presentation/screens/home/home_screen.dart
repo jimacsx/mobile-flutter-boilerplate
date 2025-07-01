@@ -18,6 +18,7 @@ class HomeScreen extends ConsumerWidget {
       key: scaffoldKey,
       body: _HomeView(scaffoldKey: scaffoldKey),
       endDrawer: SideMenu(scaffoldKey: scaffoldKey),
+      bottomNavigationBar: const CustomBottomNavigation(),
     );
   }
 }
@@ -51,13 +52,12 @@ class _HomeView extends ConsumerWidget {
           delegate: SliverChildBuilderDelegate((context, index) {
             return Column(
               children: [
-                Container(
+                SizedBox(
                   height: 800,
-                  color: Colors.amberAccent,
                   child: const Center(child: Text('Bankify Home Screen')),
                 ),
-                Container(height: 800, color: Colors.blueAccent),
-                Container(height: 800, color: Colors.purpleAccent),
+                Container(height: 800),
+                Container(height: 800),
               ],
             );
           }, childCount: 1),
