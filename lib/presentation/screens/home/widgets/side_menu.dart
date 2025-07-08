@@ -40,7 +40,7 @@ class _SideMenuState extends State<SideMenu> {
         final menuItem = homeMenuItems[value];
         context.push(menuItem.link);
         // close Drawer
-        widget.scaffoldKey.currentState?.closeDrawer();
+        widget.scaffoldKey.currentState?.closeEndDrawer();
         // if we want to access the properties of the
         // statefulWidget we have to do it through `widget.`.
 
