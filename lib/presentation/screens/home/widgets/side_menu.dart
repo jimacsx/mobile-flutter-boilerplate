@@ -52,7 +52,7 @@ class _SideMenuState extends State<SideMenu> {
         ),
 
         ...homeMenuItems
-            .sublist(0, 5) // gets the first 3 items from homeMenuItems
+            .sublist(0, 6) // now includes Settings + 5 items
             .map(
               (menuItem) => NavigationDrawerDestination(
                 icon: Icon(menuItem.icon),
@@ -72,7 +72,7 @@ class _SideMenuState extends State<SideMenu> {
         ),
 
         ...homeMenuItems
-            .sublist(5)
+            .sublist(6)
             .map(
               (menuItem) => NavigationDrawerDestination(
                 icon: Icon(menuItem.icon),

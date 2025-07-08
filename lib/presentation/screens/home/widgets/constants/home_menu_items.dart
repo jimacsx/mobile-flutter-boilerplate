@@ -18,7 +18,13 @@ class MenuItem {
 }
 
 final homeMenuItems = <MenuItem>[
-
+  MenuItem(
+    title: 'Settings',
+    subtitle: 'Application settings and language',
+    link: privateRoutes['settings']!,
+    icon: Icons.settings,
+  ),
+  
   MenuItem(
     title: 'Bottom Navigation Bar',
     subtitle: 'BottomBar example',
