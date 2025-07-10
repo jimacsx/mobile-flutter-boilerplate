@@ -24,4 +24,5 @@ const Map<String, String> widgetRoutes = {
   'tutorial': '/tutorial',
   'theme-changer': '/theme-changer',
   'counter-riverpod': '/counter-riverpod',
+  'translation-demo': '/translation-demo',
 };

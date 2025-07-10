@@ -61,6 +61,13 @@ final homeMenuItems = <MenuItem>[
   ),
   
   MenuItem(
+    title: 'Translation Demo',
+    subtitle: 'Translation system demonstration',
+    link: widgetRoutes['translation-demo']!,
+    icon: Icons.translate
+  ),
+  
+  MenuItem(
     title: 'Botones',
     subtitle: 'Varios botones en Flutter',
     link: widgetRoutes['buttons']!,

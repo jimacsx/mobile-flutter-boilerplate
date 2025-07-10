@@ -89,5 +89,10 @@ final appRouter = GoRouter(
       name: ThemeChangerScreen.name,
       builder: (context, state) => const ThemeChangerScreen(),
     ),
+    GoRoute(
+      path: widgetRoutes['translation-demo']!,
+      name: TranslationDemoScreen.name,
+      builder: (context, state) => const TranslationDemoScreen(),
+    ),
   ],
 );
