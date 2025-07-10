@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import 'package:banking_flutter_app/config/constants/routes.dart';
 import 'package:banking_flutter_app/presentation/providers/providers.dart';
 import 'package:banking_flutter_app/presentation/screens/home/widgets/widgets.dart';
+import 'package:banking_flutter_app/presentation/shared_widgets/translated_text.dart';
 
 class HomeScreen extends ConsumerWidget {
   static const String name = 'home_screen';
@@ -54,7 +57,33 @@ class _HomeView extends ConsumerWidget {
               children: [
                 SizedBox(
                   height: 800,
-                  child: const Center(child: Text('Bankify Home Screen')),
+                  child: Center(
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        const TranslatedText(
+                          'welcome',
+                          style: TextStyle(
+                            fontSize: 24,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                        const SizedBox(height: 16),
+                        const TranslatedText(
+                          'home',
+                          style: TextStyle(fontSize: 18),
+                        ),
+                        const SizedBox(height: 32),
+                        TranslatedElevatedButton(
+                          'settings',
+                          onPressed: () {
+                            // Navigate to settings
+                            context.push(privateRoutes['settings']!);
+                          },
+                        ),
+                      ],
+                    ),
+                  ),
                 ),
                 Container(height: 800),
                 Container(height: 800),
