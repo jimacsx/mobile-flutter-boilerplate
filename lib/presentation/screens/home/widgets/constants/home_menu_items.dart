@@ -3,116 +3,104 @@ import 'package:flutter/material.dart';
 import 'package:banking_flutter_app/config/constants/routes.dart';
 
 class MenuItem {
-  final String title;
-  final String subtitle;
   final String link;
   final IconData icon;
+  // New fields for localization
+  final String titleKey;
+  final String subtitleKey;
 
   // constructor
   const MenuItem({
-    required this.title,
-    required this.subtitle,
     required this.link,
     required this.icon,
+    required this.titleKey,
+    required this.subtitleKey,
   });
 }
 
 final homeMenuItems = <MenuItem>[
   MenuItem(
-    title: 'Settings',
-    subtitle: 'Application settings and language',
     link: privateRoutes['settings']!,
     icon: Icons.settings,
+    titleKey: 'settings',
+    subtitleKey: 'settings_subtitle',
   ),
-
   MenuItem(
-    title: 'Translation Demo',
-    subtitle: 'Translation system demonstration',
     link: widgetRoutes['translation-demo']!,
     icon: Icons.translate,
+    titleKey: 'translation_demo',
+    subtitleKey: 'translation_demo_subtitle',
   ),
-  
   MenuItem(
-    title: 'Bottom Navigation Bar',
-    subtitle: 'BottomBar example',
     link: widgetRoutes['bottom-bar']!,
-    icon: Icons.border_bottom
+    icon: Icons.border_bottom,
+    titleKey: 'bottom_navigation_bar',
+    subtitleKey: 'bottom_navigation_bar_subtitle',
   ),
-
   MenuItem(
-    title: 'Drawer',
-    subtitle: 'Drawer example',
     link: widgetRoutes['drawer']!,
-    icon: Icons.menu
+    icon: Icons.menu,
+    titleKey: 'drawer',
+    subtitleKey: 'drawer_subtitle',
   ),
-
   MenuItem(
-    title: 'Riverpod Counter',
-    subtitle: 'Introducción a Riverpod',
     link: widgetRoutes['counter-riverpod']!,
-    icon: Icons.add
+    icon: Icons.add,
+    titleKey: 'riverpod_counter',
+    subtitleKey: 'riverpod_counter_subtitle',
   ),
- 
   MenuItem(
-    title: 'Login',
-    subtitle: 'Pantalla login',
     link: publicRoutes['login']!,
-    icon: Icons.login
+    icon: Icons.login,
+    titleKey: 'login',
+    subtitleKey: 'login_subtitle',
   ),
-  
   MenuItem(
-    title: 'Botones',
-    subtitle: 'Varios botones en Flutter',
     link: widgetRoutes['buttons']!,
-    icon: Icons.smart_button_outlined
+    icon: Icons.smart_button_outlined,
+    titleKey: 'botones',
+    subtitleKey: 'botones_subtitle',
   ),
-
   MenuItem(
-    title: 'Tarjetas',
-    subtitle: 'Un contenedor estilizado',
     link: widgetRoutes['cards']!,
-    icon: Icons.credit_card
+    icon: Icons.credit_card,
+    titleKey: 'tarjetas',
+    subtitleKey: 'tarjetas_subtitle',
   ),
-
   MenuItem(
-    title: 'Progress Indicators',
-    subtitle: 'Generales y controlados',
     link: widgetRoutes['progress']!,
-    icon: Icons.refresh_rounded
+    icon: Icons.refresh_rounded,
+    titleKey: 'progress_indicators',
+    subtitleKey: 'progress_indicators_subtitle',
   ),
-
   MenuItem(
-    title: 'Snackbars y diálogos',
-    subtitle: 'Indicadores en pantalla',
     link: widgetRoutes['snackbars']!,
-    icon: Icons.info_outline
+    icon: Icons.info_outline,
+    titleKey: 'snackbars_dialogs',
+    subtitleKey: 'snackbars_dialogs_subtitle',
   ),
-
   MenuItem(
-    title: 'Animated container',
-    subtitle: 'Stateful widget animado',
     link: widgetRoutes['animated']!,
-    icon: Icons.check_box_outline_blank_rounded
+    icon: Icons.check_box_outline_blank_rounded,
+    titleKey: 'animated_container',
+    subtitleKey: 'animated_container_subtitle',
   ),
-
   MenuItem(
-    title: 'UI Controls + Tiles',
-    subtitle: 'Una serie de controles de Flutter',
     link: widgetRoutes['ui-controls']!,
-    icon: Icons.car_rental_outlined
+    icon: Icons.car_rental_outlined,
+    titleKey: 'ui_controls_tiles',
+    subtitleKey: 'ui_controls_tiles_subtitle',
   ),
-
   MenuItem(
-    title: 'Introducción a la aplicación',
-    subtitle: 'Pequeño tutorial introductorio',
     link: widgetRoutes['tutorial']!,
-    icon: Icons.accessible_rounded
+    icon: Icons.accessible_rounded,
+    titleKey: 'app_tutorial',
+    subtitleKey: 'app_tutorial_subtitle',
   ),
-
   MenuItem(
-    title: 'InfiniteScroll y Pull',
-    subtitle: 'Listas infinitas y pull to refresh',
     link: widgetRoutes['infinite']!,
-    icon: Icons.list_alt_rounded
+    icon: Icons.list_alt_rounded,
+    titleKey: 'infinite_scroll_pull',
+    subtitleKey: 'infinite_scroll_pull_subtitle',
   ),
 ];

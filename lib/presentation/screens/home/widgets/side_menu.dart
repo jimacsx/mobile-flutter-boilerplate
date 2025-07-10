@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
 import 'constants/home_menu_items.dart';
+import 'package:banking_flutter_app/presentation/shared_widgets/translated_text.dart';
 
 class SideMenu extends StatefulWidget {
   final GlobalKey<ScaffoldState> scaffoldKey;
@@ -48,7 +49,10 @@ class _SideMenuState extends State<SideMenu> {
       children: [
         Padding(
           padding: EdgeInsets.fromLTRB(28, hasNotch ? 0 : 20, 16, 10),
-          child: const Text('Screens'),
+          child: const TranslatedText(
+            'screens_section',
+            style: TextStyle(fontWeight: FontWeight.bold),
+          ),
         ),
 
         ...homeMenuItems
@@ -59,7 +63,7 @@ class _SideMenuState extends State<SideMenu> {
             .map(
               (menuItem) => NavigationDrawerDestination(
                 icon: Icon(menuItem.icon),
-                label: Text(menuItem.title),
+                label: TranslatedText(menuItem.titleKey),
               ),
             ),
 
@@ -71,7 +75,10 @@ class _SideMenuState extends State<SideMenu> {
 
         const Padding(
           padding: EdgeInsets.fromLTRB(28, 10, 16, 10),
-          child: Text('Widgets'),
+          child: TranslatedText(
+            'widgets_section',
+            style: TextStyle(fontWeight: FontWeight.bold),
+          ),
         ),
 
         ...homeMenuItems
@@ -79,7 +86,7 @@ class _SideMenuState extends State<SideMenu> {
             .map(
               (menuItem) => NavigationDrawerDestination(
                 icon: Icon(menuItem.icon),
-                label: Text(menuItem.title),
+                label: TranslatedText(menuItem.titleKey),
               ),
             ),
       ],

@@ -13,7 +13,7 @@ class TranslationDemoScreen extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     return Scaffold(
       appBar: AppBar(
-        title: const TranslatedText('settings'),
+        title: const TranslatedText('translation_demo'),
       ),
       body: SingleChildScrollView(
         padding: const EdgeInsets.symmetric(horizontal: 24.0, vertical: 8.0),
@@ -44,8 +44,8 @@ class TranslationDemoScreen extends ConsumerWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(
-          'Translation Examples:',
+        TranslatedText(
+          'translation_examples',
           style: Theme.of(context).textTheme.titleMedium,
         ),
         const SizedBox(height: 16),
@@ -83,8 +83,8 @@ class TranslationDemoScreen extends ConsumerWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(
-          'Translated Buttons:',
+        TranslatedText(
+          'translated_buttons',
           style: Theme.of(context).textTheme.titleMedium,
         ),
         const SizedBox(height: 16),
@@ -95,7 +95,7 @@ class TranslationDemoScreen extends ConsumerWidget {
                 'save',
                 onPressed: () {
                   ScaffoldMessenger.of(context).showSnackBar(
-                    SnackBar(content: Text('Save button pressed')),
+                    SnackBar(content: TranslatedText('save_button_pressed')),
                   );
                 },
               ),
@@ -106,7 +106,7 @@ class TranslationDemoScreen extends ConsumerWidget {
                 'cancel',
                 onPressed: () {
                   ScaffoldMessenger.of(context).showSnackBar(
-                    SnackBar(content: Text('Cancel button pressed')),
+                    SnackBar(content: TranslatedText('cancel_button_pressed')),
                   );
                 },
               ),
@@ -121,7 +121,7 @@ class TranslationDemoScreen extends ConsumerWidget {
                 'edit',
                 onPressed: () {
                   ScaffoldMessenger.of(context).showSnackBar(
-                    SnackBar(content: Text('Edit button pressed')),
+                    SnackBar(content: TranslatedText('edit_button_pressed')),
                   );
                 },
               ),
@@ -132,7 +132,7 @@ class TranslationDemoScreen extends ConsumerWidget {
                 'delete',
                 onPressed: () {
                   ScaffoldMessenger.of(context).showSnackBar(
-                    SnackBar(content: Text('Delete button pressed')),
+                    SnackBar(content: TranslatedText('delete_button_pressed')),
                   );
                 },
               ),
@@ -149,8 +149,8 @@ class TranslationDemoScreen extends ConsumerWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(
-          'Language Selector:',
+        TranslatedText(
+          'language_selector',
           style: Theme.of(context).textTheme.titleMedium,
         ),
         const SizedBox(height: 16),
@@ -174,7 +174,13 @@ class TranslationDemoScreen extends ConsumerWidget {
           error: (error, stack) => Card(
             child: Padding(
               padding: const EdgeInsets.all(16.0),
-              child: Text('Error: $error'),
+              child: Row(
+                children: [
+                  const TranslatedText('error'),
+                  const SizedBox(width: 8),
+                  Text('$error'),
+                ],
+              ),
             ),
           ),
         ),
@@ -200,9 +206,27 @@ class TranslationDemoScreen extends ConsumerWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text('Code: ${language.code}'),
-                  Text('Name: ${language.name}'),
-                  Text('Native Name: ${language.nativeName}'),
+                  Row(
+                    children: [
+                      const TranslatedText('language_code'),
+                      const SizedBox(width: 8),
+                      Text(language.code),
+                    ],
+                  ),
+                  Row(
+                    children: [
+                      const TranslatedText('language_name'),
+                      const SizedBox(width: 8),
+                      Text(language.name),
+                    ],
+                  ),
+                  Row(
+                    children: [
+                      const TranslatedText('language_native_name'),
+                      const SizedBox(width: 8),
+                      Text(language.nativeName),
+                    ],
+                  ),
                 ],
               ),
             ),
@@ -210,13 +234,19 @@ class TranslationDemoScreen extends ConsumerWidget {
           loading: () => const Card(
             child: Padding(
               padding: EdgeInsets.all(16.0),
-              child: Text('Loading language info...'),
+              child: TranslatedText('loading_language_info'),
             ),
           ),
           error: (error, stack) => Card(
             child: Padding(
               padding: const EdgeInsets.all(16.0),
-              child: Text('Error: $error'),
+              child: Row(
+                children: [
+                  const TranslatedText('error'),
+                  const SizedBox(width: 8),
+                  Text('$error'),
+                ],
+              ),
             ),
           ),
         ),
