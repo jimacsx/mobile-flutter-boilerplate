@@ -28,6 +28,7 @@ The translation system is organized into three main layers:
 - ✅ Multi-language support (English, Spanish, Chinese)
 - ✅ Persistent language selection using SharedPreferences
 - ✅ Reactive UI updates when language changes
+- ✅ Dynamic value interpolation in translations
 - ✅ Clean Architecture and DDD principles
 - ✅ Dependency injection with Riverpod
 - ✅ Reusable translation widgets
@@ -43,20 +44,58 @@ Use the `TranslatedText` widget for simple text translations:
 const TranslatedText('welcome')
 ```
 
-### 2. Translated Buttons
+### 2. Dynamic Value Interpolation
 
-Use `TranslatedElevatedButton` or `TranslatedTextButton` for buttons:
+Use the `values` parameter to interpolate dynamic content into translations:
 
 ```dart
+// Simple dynamic value
+TranslatedText(
+  'hello_user',
+  values: {'name': 'John'}
+)
+
+// Multiple dynamic values
+TranslatedText(
+  'items_count',
+  values: {'count': 5, 'type': 'documents'}
+)
+
+// With different data types
+TranslatedText(
+  'user_info',
+  values: {
+    'name': 'Alice',
+    'age': 25,
+    'isActive': true
+  }
+)
+```
+
+### 3. Translated Buttons with Dynamic Values
+
+Use `TranslatedElevatedButton` or `TranslatedTextButton` with dynamic values:
+
+```dart
+// Basic button
 TranslatedElevatedButton(
   'save',
   onPressed: () {
     // Handle save action
   },
 )
+
+// Button with dynamic values
+TranslatedElevatedButton(
+  'save_item',
+  values: {'item': 'document', 'count': 3},
+  onPressed: () {
+    // Handle save action
+  },
+)
 ```
 
-### 3. Programmatic Translation
+### 4. Programmatic Translation
 
 Access translations programmatically using the provider:
 
@@ -64,7 +103,7 @@ Access translations programmatically using the provider:
 final translation = ref.watch(translationProvider('welcome'));
 ```
 
-### 4. Language Selection
+### 5. Language Selection
 
 The language selection is handled automatically in the settings screen. When a user selects a new language:
 
@@ -107,6 +146,66 @@ Common translation keys available:
 | `welcome` | Welcome | Bienvenido | 欢迎 |
 | `goodbye` | Goodbye | Adiós | 再见 |
 
+## Dynamic Value Interpolation
+
+The translation system supports dynamic value interpolation using placeholders in the format `{key}`. This allows you to include dynamic content like names, numbers, or other variables in your translations.
+
+### Interpolation Examples
+
+**Translation strings with placeholders:**
+
+```dart
+// English
+'hello_user': 'Hello {name}!',
+'items_count': 'You have {count} {type}',
+'user_info': 'User {name} is {age} years old and is {status}',
+
+// Spanish
+'hello_user': '¡Hola {name}!',
+'items_count': 'Tienes {count} {type}',
+'user_info': 'El usuario {name} tiene {age} años y está {status}',
+
+// Chinese
+'hello_user': '你好 {name}！',
+'items_count': '你有 {count} 个 {type}',
+'user_info': '用户 {name} 今年 {age} 岁，状态为 {status}',
+```
+
+**Usage in widgets:**
+
+```dart
+// Simple interpolation
+TranslatedText(
+  'hello_user',
+  values: {'name': 'John'}
+)
+
+// Multiple values
+TranslatedText(
+  'items_count',
+  values: {'count': 5, 'type': 'documents'}
+)
+
+// Complex interpolation
+TranslatedText(
+  'user_info',
+  values: {
+    'name': 'Alice',
+    'age': 25,
+    'status': 'active'
+  }
+)
+```
+
+### Supported Data Types
+
+The interpolation system supports all basic Dart data types:
+
+- **Strings**: `'name': 'John'`
+- **Numbers**: `'count': 5`, `'price': 19.99`
+- **Booleans**: `'isActive': true`
+- **Any object**: Will be converted to string using `toString()`
+
 ## Adding New Translations
 
 ### 1. Add Translation Keys
@@ -118,16 +217,19 @@ case 'en':
   return {
     // ... existing translations
     'new_key': 'New Translation',
+    'greeting_with_name': 'Hello {name}!', // With interpolation
   };
 case 'es':
   return {
     // ... existing translations
     'new_key': 'Nueva Traducción',
+    'greeting_with_name': '¡Hola {name}!', // With interpolation
   };
 case 'zh':
   return {
     // ... existing translations
     'new_key': '新翻译',
+    'greeting_with_name': '你好 {name}！', // With interpolation
   };
 ```
 
@@ -136,7 +238,14 @@ case 'zh':
 Use the new translation key in your widgets:
 
 ```dart
+// Basic translation
 const TranslatedText('new_key')
+
+// With dynamic values
+TranslatedText(
+  'greeting_with_name',
+  values: {'name': 'John'}
+)
 ```
 
 ## Adding New Languages
@@ -174,6 +283,9 @@ case 'fr':
 3. **Fallback handling**: The system returns the key if translation is not found
 4. **Type safety**: Use the `TranslatedText` widgets for type safety
 5. **Performance**: Translations are cached and only reloaded when language changes
+6. **Interpolation patterns**: Use consistent placeholder names across languages
+7. **Dynamic values**: Keep interpolation simple and avoid complex logic in translation strings
+8. **Backward compatibility**: Always provide fallback values for dynamic content
 
 ## Testing
 
@@ -183,6 +295,8 @@ The translation system can be tested by:
 2. Navigating to Settings
 3. Changing the language
 4. Observing UI updates throughout the app
+5. Testing dynamic value interpolation with different data types
+6. Verifying that interpolation works correctly across all supported languages
 
 ## Dependencies
 
