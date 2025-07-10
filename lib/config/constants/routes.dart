@@ -22,7 +22,6 @@ const Map<String, String> widgetRoutes = {
   'bottom-bar': '/bottom-bar',
   'infinite': '/infinite',
   'tutorial': '/tutorial',
-  'theme-changer': '/theme-changer',
   'counter-riverpod': '/counter-riverpod',
   'translation-demo': '/translation-demo',
 };

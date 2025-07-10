@@ -24,6 +24,13 @@ final homeMenuItems = <MenuItem>[
     link: privateRoutes['settings']!,
     icon: Icons.settings,
   ),
+
+  MenuItem(
+    title: 'Translation Demo',
+    subtitle: 'Translation system demonstration',
+    link: widgetRoutes['translation-demo']!,
+    icon: Icons.translate,
+  ),
   
   MenuItem(
     title: 'Bottom Navigation Bar',
@@ -45,26 +52,12 @@ final homeMenuItems = <MenuItem>[
     link: widgetRoutes['counter-riverpod']!,
     icon: Icons.add
   ),
-
-  MenuItem(
-    title: 'Cambiar tema',
-    subtitle: 'Cambiar tema de la aplicación',
-    link: widgetRoutes['theme-changer']!,
-    icon: Icons.color_lens_outlined
-  ),
  
   MenuItem(
     title: 'Login',
     subtitle: 'Pantalla login',
     link: publicRoutes['login']!,
     icon: Icons.login
-  ),
-  
-  MenuItem(
-    title: 'Translation Demo',
-    subtitle: 'Translation system demonstration',
-    link: widgetRoutes['translation-demo']!,
-    icon: Icons.translate
   ),
   
   MenuItem(

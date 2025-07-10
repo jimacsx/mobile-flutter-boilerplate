@@ -10,5 +10,4 @@ export 'package:banking_flutter_app/presentation/custom-widgets/screens/navigati
 export 'package:banking_flutter_app/presentation/custom-widgets/screens/navigation/profile_screen.dart';
 export 'package:banking_flutter_app/presentation/custom-widgets/screens/progress/progress_screen.dart';
 export 'package:banking_flutter_app/presentation/custom-widgets/screens/snackbar/snackbar_screen.dart';
-export 'package:banking_flutter_app/presentation/custom-widgets/screens/theme_changer/theme_changer_screen.dart';
 export 'package:banking_flutter_app/presentation/custom-widgets/screens/ui_controls/ui_controls_screen.dart';
