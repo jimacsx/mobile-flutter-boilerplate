@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:banking_flutter_app/presentation/custom-widgets/providers/counter_provider.dart';
+import 'package:banking_flutter_app/presentation/shared_widgets/translated_text.dart';
 
 // Extend ConsumerWidget instead of StatelessWidget, which is exposed by Riverpod
 class CounterScreen extends ConsumerWidget {
@@ -13,11 +14,12 @@ class CounterScreen extends ConsumerWidget {
     final int clickCounter = ref.watch(counterProvider);
 
     return Scaffold(
-      appBar: AppBar(title: const Text('Counter Screen')),
+      appBar: AppBar(title: const TranslatedText('counter_screen')),
 
       body: Center(
-        child: Text(
-          'Valor: $clickCounter',
+        child: TranslatedText(
+          'counter_value',
+          values: {'count': clickCounter},
           style: Theme.of(context).textTheme.titleLarge,
         ),
       ),
