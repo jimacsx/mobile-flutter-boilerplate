@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:banking_flutter_app/presentation/shared_widgets/translated_text.dart';
 
 class CustomSliverAppbar extends StatelessWidget {
   final GlobalKey<ScaffoldState> scaffoldKey;
@@ -15,6 +16,7 @@ class CustomSliverAppbar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final colors = Theme.of(context).colorScheme;
+    final String name = 'Bankify';
 
     return SliverAppBar(
       floating: true,
@@ -32,7 +34,10 @@ class CustomSliverAppbar extends StatelessWidget {
             ),
       ),
       titleSpacing: 0,
-      title: const Text('Hello Bankify!'),
+      title: TranslatedText(
+        'hello_bankify',
+        values: {'name': name},
+      ),
       actions: [
         Builder(
           builder:

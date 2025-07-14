@@ -1,0 +1,252 @@
+import 'dart:convert';
+import 'package:shared_preferences/shared_preferences.dart';
+import 'package:banking_flutter_app/domain/entities/language.dart';
+
+abstract class TranslationLocalDataSource {
+  Future<void> setCurrentLanguage(Language language);
+  Future<Language?> getCurrentLanguage();
+  Future<Map<String, String>> getTranslations(String languageCode);
+}
+
+class TranslationLocalDataSourceImpl implements TranslationLocalDataSource {
+  static const String _currentLanguageKey = 'current_language';
+
+  @override
+  Future<void> setCurrentLanguage(Language language) async {
+    final prefs = await SharedPreferences.getInstance();
+    await prefs.setString(_currentLanguageKey, jsonEncode({
+      'code': language.code,
+      'name': language.name,
+      'nativeName': language.nativeName,
+    }));
+  }
+
+  @override
+  Future<Language?> getCurrentLanguage() async {
+    final prefs = await SharedPreferences.getInstance();
+    final languageJson = prefs.getString(_currentLanguageKey);
+    
+    if (languageJson == null) return null;
+    
+    final languageMap = jsonDecode(languageJson) as Map<String, dynamic>;
+    return Language(
+      code: languageMap['code'],
+      name: languageMap['name'],
+      nativeName: languageMap['nativeName'],
+    );
+  }
+
+  @override
+  Future<Map<String, String>> getTranslations(String languageCode) async {
+    // In a real app, this would load from JSON files or assets
+    // For now, we'll return hardcoded translations
+    switch (languageCode) {
+      case 'en':
+        return {
+          'screens_section': 'Screens',
+          'widgets_section': 'Widgets',
+          'settings': 'Settings',
+          'settings_subtitle': 'Application settings and language',
+          'translation_demo': 'Translation Demo',
+          'translation_demo_subtitle': 'Translation system demonstration',
+          'bottom_navigation_bar': 'Bottom Navigation Bar',
+          'bottom_navigation_bar_subtitle': 'BottomBar example',
+          'drawer': 'Drawer',
+          'drawer_subtitle': 'Drawer example',
+          'riverpod_counter': 'Riverpod Counter',
+          'riverpod_counter_subtitle': 'Introduction to Riverpod',
+          'login': 'Login',
+          'login_subtitle': 'Login screen',
+          'botones': 'Buttons',
+          'botones_subtitle': 'Various buttons in Flutter',
+          'tarjetas': 'Cards',
+          'tarjetas_subtitle': 'A styled container',
+          'progress_indicators': 'Progress Indicators',
+          'progress_indicators_subtitle': 'General and controlled',
+          'snackbars_dialogs': 'Snackbars and Dialogs',
+          'snackbars_dialogs_subtitle': 'On-screen indicators',
+          'animated_container': 'Animated container',
+          'animated_container_subtitle': 'Animated stateful widget',
+          'ui_controls_tiles': 'UI Controls + Tiles',
+          'ui_controls_tiles_subtitle': 'A series of Flutter controls',
+          'app_tutorial': 'App Introduction',
+          'app_tutorial_subtitle': 'Small introductory tutorial',
+          'infinite_scroll_pull': 'InfiniteScroll and Pull',
+          'infinite_scroll_pull_subtitle': 'Infinite lists and pull to refresh',
+          'hello_bankify': 'Hello {name}!',
+          'counter_screen': 'Counter Screen',
+          'counter_value': 'Value: {count}',
+          'select_language': 'Select Language',
+          'current_language': 'Current language',
+          'english': 'English',
+          'spanish': 'Spanish',
+          'chinese': 'Chinese',
+          'home': 'Home',
+          'profile': 'Profile',
+          'logout': 'Logout',
+          'email': 'Email',
+          'password': 'Password',
+          'submit': 'Submit',
+          'cancel': 'Cancel',
+          'save': 'Save',
+          'delete': 'Delete',
+          'edit': 'Edit',
+          'search': 'Search',
+          'loading': 'Loading...',
+          'error': 'Error',
+          'success': 'Success',
+          'welcome': 'Welcome',
+          'goodbye': 'Goodbye',
+          'translation_examples': 'Translation Examples:',
+          'translated_buttons': 'Translated Buttons:',
+          'language_selector': 'Language Selector:',
+          'save_button_pressed': 'Save button pressed',
+          'cancel_button_pressed': 'Cancel button pressed',
+          'edit_button_pressed': 'Edit button pressed',
+          'delete_button_pressed': 'Delete button pressed',
+          'loading_language_info': 'Loading language info...',
+          'language_code': 'Code:',
+          'language_name': 'Name:',
+          'language_native_name': 'Native Name:',
+        };
+      case 'es':
+        return {
+          'screens_section': 'Pantallas',
+          'widgets_section': 'Widgets',
+          'settings': 'Configuración',
+          'settings_subtitle': 'Configuración de la aplicación e idioma',
+          'translation_demo': 'Demo de Traducción',
+          'translation_demo_subtitle': 'Demostración del sistema de traducción',
+          'bottom_navigation_bar': 'Barra de Navegación Inferior',
+          'bottom_navigation_bar_subtitle': 'Ejemplo de BottomBar',
+          'drawer': 'Menú Lateral',
+          'drawer_subtitle': 'Ejemplo de Drawer',
+          'riverpod_counter': 'Contador Riverpod',
+          'riverpod_counter_subtitle': 'Introducción a Riverpod',
+          'login': 'Iniciar Sesión',
+          'login_subtitle': 'Pantalla de inicio de sesión',
+          'botones': 'Botones',
+          'botones_subtitle': 'Varios botones en Flutter',
+          'tarjetas': 'Tarjetas',
+          'tarjetas_subtitle': 'Un contenedor estilizado',
+          'progress_indicators': 'Indicadores de Progreso',
+          'progress_indicators_subtitle': 'Generales y controlados',
+          'snackbars_dialogs': 'Snackbars y Diálogos',
+          'snackbars_dialogs_subtitle': 'Indicadores en pantalla',
+          'animated_container': 'Contenedor Animado',
+          'animated_container_subtitle': 'Widget con estado animado',
+          'ui_controls_tiles': 'Controles UI + Tiles',
+          'ui_controls_tiles_subtitle': 'Una serie de controles de Flutter',
+          'app_tutorial': 'Introducción a la aplicación',
+          'app_tutorial_subtitle': 'Pequeño tutorial introductorio',
+          'infinite_scroll_pull': 'InfiniteScroll y Pull',
+          'infinite_scroll_pull_subtitle': 'Listas infinitas y pull to refresh',
+          'hello_bankify': '¡Hola {name}!',
+          'counter_screen': 'Pantalla Contador',
+          'counter_value': 'Valor: {count}',
+          'select_language': 'Seleccionar Idioma',
+          'current_language': 'Idioma actual',
+          'english': 'Inglés',
+          'spanish': 'Español',
+          'chinese': 'Chino',
+          'home': 'Inicio',
+          'profile': 'Perfil',
+          'logout': 'Cerrar Sesión',
+          'email': 'Correo Electrónico',
+          'password': 'Contraseña',
+          'submit': 'Enviar',
+          'cancel': 'Cancelar',
+          'save': 'Guardar',
+          'delete': 'Eliminar',
+          'edit': 'Editar',
+          'search': 'Buscar',
+          'loading': 'Cargando...',
+          'error': 'Error',
+          'success': 'Éxito',
+          'welcome': 'Bienvenido',
+          'goodbye': 'Adiós',
+          'translation_examples': 'Ejemplos de Traducción:',
+          'translated_buttons': 'Botones Traducidos:',
+          'language_selector': 'Selector de Idioma:',
+          'save_button_pressed': 'Botón guardar presionado',
+          'cancel_button_pressed': 'Botón cancelar presionado',
+          'edit_button_pressed': 'Botón editar presionado',
+          'delete_button_pressed': 'Botón eliminar presionado',
+          'loading_language_info': 'Cargando información del idioma...',
+          'language_code': 'Código:',
+          'language_name': 'Nombre:',
+          'language_native_name': 'Nombre Nativo:',
+        };
+      case 'zh':
+        return {
+          'screens_section': '屏幕',
+          'widgets_section': '小部件',
+          'settings': '设置',
+          'settings_subtitle': '应用设置和语言',
+          'translation_demo': '翻译演示',
+          'translation_demo_subtitle': '翻译系统演示',
+          'bottom_navigation_bar': '底部导航栏',
+          'bottom_navigation_bar_subtitle': 'BottomBar 示例',
+          'drawer': '抽屉',
+          'drawer_subtitle': '抽屉示例',
+          'riverpod_counter': 'Riverpod 计数器',
+          'riverpod_counter_subtitle': 'Riverpod 介绍',
+          'login': '登录',
+          'login_subtitle': '登录界面',
+          'botones': '按钮',
+          'botones_subtitle': 'Flutter 中的各种按钮',
+          'tarjetas': '卡片',
+          'tarjetas_subtitle': '一个有样式的容器',
+          'progress_indicators': '进度指示器',
+          'progress_indicators_subtitle': '通用和受控',
+          'snackbars_dialogs': '消息条和对话框',
+          'snackbars_dialogs_subtitle': '屏幕上的指示器',
+          'animated_container': '动画容器',
+          'animated_container_subtitle': '有状态动画组件',
+          'ui_controls_tiles': 'UI 控件 + 列表项',
+          'ui_controls_tiles_subtitle': '一系列 Flutter 控件',
+          'app_tutorial': '应用介绍',
+          'app_tutorial_subtitle': '简短的介绍教程',
+          'infinite_scroll_pull': '无限滚动与下拉刷新',
+          'infinite_scroll_pull_subtitle': '无限列表和下拉刷新',
+          'hello_bankify': '你好 {name}！',
+          'counter_screen': '计数器屏幕',
+          'counter_value': '值：{count}',
+          'select_language': '选择语言',
+          'current_language': '当前语言',
+          'english': '英语',
+          'spanish': '西班牙语',
+          'chinese': '中文',
+          'home': '首页',
+          'profile': '个人资料',
+          'logout': '登出',
+          'email': '电子邮件',
+          'password': '密码',
+          'submit': '提交',
+          'cancel': '取消',
+          'save': '保存',
+          'delete': '删除',
+          'edit': '编辑',
+          'search': '搜索',
+          'loading': '加载中...',
+          'error': '错误',
+          'success': '成功',
+          'welcome': '欢迎',
+          'goodbye': '再见',
+          'translation_examples': '翻译示例:',
+          'translated_buttons': '翻译按钮:',
+          'language_selector': '语言选择器:',
+          'save_button_pressed': '保存按钮已按下',
+          'cancel_button_pressed': '取消按钮已按下',
+          'edit_button_pressed': '编辑按钮已按下',
+          'delete_button_pressed': '删除按钮已按下',
+          'loading_language_info': '正在加载语言信息...',
+          'language_code': '代码:',
+          'language_name': '名称:',
+          'language_native_name': '本地名称:',
+        };
+      default:
+        return {};
+    }
+  }
+} 
