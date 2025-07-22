@@ -114,6 +114,10 @@ class TranslationLocalDataSourceImpl implements TranslationLocalDataSource {
           'pay.body': 'Pay',
           'help.title': 'Help',
           'help.body': 'Help',
+          'home.bottomNavigation.home': 'Home',
+          'home.bottomNavigation.transfer': 'Transfer',
+          'home.bottomNavigation.pay': 'Pay',
+          'home.bottomNavigation.help': 'Help',
         };
       case 'es':
         return {
@@ -188,6 +192,10 @@ class TranslationLocalDataSourceImpl implements TranslationLocalDataSource {
           'pay.body': 'Pago',
           'help.title': 'Ayuda',
           'help.body': 'Ayuda',
+          'home.bottomNavigation.home': 'Inicio',
+          'home.bottomNavigation.transfer': 'Transferir',
+          'home.bottomNavigation.pay': 'Pagar',
+          'home.bottomNavigation.help': 'Ayuda',
         };
       case 'zh':
         return {
@@ -262,6 +270,10 @@ class TranslationLocalDataSourceImpl implements TranslationLocalDataSource {
           'pay.body': '支付',
           'help.title': '帮助',
           'help.body': '帮助',
+          'home.bottomNavigation.home': '首页',
+          'home.bottomNavigation.transfer': '转让',
+          'home.bottomNavigation.pay': '薪酬',
+          'home.bottomNavigation.help': '帮助',
         };
       default:
         return {};

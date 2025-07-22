@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:banking_flutter_app/config/constants/routes.dart';
+import 'package:banking_flutter_app/presentation/shared_widgets/translated_text.dart';
 
 class CustomBottomNavigation extends StatelessWidget {
   
@@ -35,22 +36,22 @@ class CustomBottomNavigation extends StatelessWidget {
       elevation: 0,
       currentIndex: currentIndex,
       onTap: (value) => onItemTapped(context, value),
-      items: const [
+      items: [
         BottomNavigationBarItem(
-          icon: Icon(Icons.home_filled),
-          label: 'Home',
+          icon: const Icon(Icons.home_filled),
+          label: TranslatedString.of(context, 'home.bottomNavigation.home'),
         ),
         BottomNavigationBarItem(
-          icon: Icon(Icons.arrow_outward),
-          label: 'Transferir',
+          icon: const Icon(Icons.arrow_outward),
+          label: TranslatedString.of(context, 'home.bottomNavigation.transfer'),
         ),
         BottomNavigationBarItem(
-          icon: Icon(Icons.credit_card),
-          label: 'Pagar',
+          icon: const Icon(Icons.credit_card),
+          label: TranslatedString.of(context, 'home.bottomNavigation.pay'),
         ),
         BottomNavigationBarItem(
-          icon: Icon(Icons.live_help_outlined),
-          label: 'Ayuda',
+          icon: const Icon(Icons.live_help_outlined),
+          label: TranslatedString.of(context, 'home.bottomNavigation.help'),
         ),
       ],
       // With less than 4 elements: 
