@@ -108,6 +108,12 @@ class TranslationLocalDataSourceImpl implements TranslationLocalDataSource {
           'language_code': 'Code:',
           'language_name': 'Name:',
           'language_native_name': 'Native Name:',
+          'transfer.title': 'Transfer',
+          'transfer.body': 'Transfer',
+          'pay.title': 'Pay',
+          'pay.body': 'Pay',
+          'help.title': 'Help',
+          'help.body': 'Help',
         };
       case 'es':
         return {
@@ -176,6 +182,12 @@ class TranslationLocalDataSourceImpl implements TranslationLocalDataSource {
           'language_code': 'Código:',
           'language_name': 'Nombre:',
           'language_native_name': 'Nombre Nativo:',
+          'transfer.title': 'Transferir',
+          'transfer.body': 'Transferencia',
+          'pay.title': 'Pagar',
+          'pay.body': 'Pago',
+          'help.title': 'Ayuda',
+          'help.body': 'Ayuda',
         };
       case 'zh':
         return {
@@ -244,6 +256,12 @@ class TranslationLocalDataSourceImpl implements TranslationLocalDataSource {
           'language_code': '代码:',
           'language_name': '名称:',
           'language_native_name': '本地名称:',
+          'transfer.title': '转账',
+          'transfer.body': '转账',
+          'pay.title': '支付',
+          'pay.body': '支付',
+          'help.title': '帮助',
+          'help.body': '帮助',
         };
       default:
         return {};
