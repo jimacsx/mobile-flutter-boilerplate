@@ -4,13 +4,19 @@ import 'package:banking_flutter_app/presentation/screens/screens.dart';
 import 'package:banking_flutter_app/presentation/custom-widgets/screens/screens.dart';
 
 final appRouter = GoRouter(
-  initialLocation: '/',
+  initialLocation: initialLocationRoute,
   routes: [
     // ------ private routes ------
     GoRoute(
       path: privateRoutes['home']!,
       name: HomeScreen.name,
-      builder: (context, state) => const HomeScreen(),
+      builder: (context, state) {
+        final pageIndex = int.parse(state.pathParameters['page'] ?? '0');
+        return HomeScreen(pageIndex: pageIndex);
+      },
+      routes: [],
+    ),
+    GoRoute(path: '/', redirect: (_, __) => initialLocationRoute,
     ),
     GoRoute(
       path: privateRoutes['profile']!,

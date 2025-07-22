@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:banking_flutter_app/config/constants/app_keys.dart';
 import 'package:banking_flutter_app/presentation/shared_widgets/translated_text.dart';
 
 class CustomSliverAppbar extends StatelessWidget {
-  final GlobalKey<ScaffoldState> scaffoldKey;
+
   final VoidCallback toggleDarkMode;
   final bool isDarkMode;
 
   const CustomSliverAppbar({
     super.key,
-    required this.scaffoldKey,
     required this.isDarkMode,
     required this.toggleDarkMode,
   });
@@ -63,7 +63,8 @@ class CustomSliverAppbar extends StatelessWidget {
         Builder(
           builder:
               (context) => IconButton(
-                onPressed: () => scaffoldKey.currentState!.openEndDrawer(),
+                onPressed:
+                    () => homeViewScaffoldKey.currentState!.openEndDrawer(),
                 icon: Icon(Icons.menu_outlined, color: colors.onSurface),
               ),
         ),

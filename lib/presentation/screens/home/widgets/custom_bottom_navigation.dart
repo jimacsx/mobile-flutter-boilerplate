@@ -1,14 +1,40 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
+import 'package:banking_flutter_app/config/constants/routes.dart';
 
 class CustomBottomNavigation extends StatelessWidget {
-  const CustomBottomNavigation({super.key});
+  
+  final int currentIndex;
+
+  const CustomBottomNavigation({super.key, required this.currentIndex});
+
+  void onItemTapped(BuildContext context, int index) {
+    switch (index) {
+      case 0:
+        context.go(homeViewsRoutes['home']!);
+        break;
+      case 1:
+        context.go(homeViewsRoutes['transfer']!);
+        break;
+      case 2:
+        context.go(homeViewsRoutes['pay']!);
+        break;
+      case 3:
+        context.go(homeViewsRoutes['help']!);
+        break;
+      default:
+        context.go(homeViewsRoutes['home']!);
+        break;
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
-    return BottomNavigationBar( // con un solo Item no funciona mínimo deben ser 2 Items
+    return BottomNavigationBar(
+      // with only one Item does not work, minimum 2 Items are required
       elevation: 0,
-      currentIndex: 0,
-
+      currentIndex: currentIndex,
+      onTap: (value) => onItemTapped(context, value),
       items: const [
         BottomNavigationBarItem(
           icon: Icon(Icons.home_filled),
