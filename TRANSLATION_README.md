@@ -95,7 +95,7 @@ TranslatedElevatedButton(
 )
 ```
 
-### 4. Programmatic Translation
+### 4. Programmatic Translation (Widget Context)
 
 Access translations programmatically using the provider:
 
@@ -103,7 +103,28 @@ Access translations programmatically using the provider:
 final translation = ref.watch(translationProvider('welcome'));
 ```
 
-### 5. Language Selection
+### 5. Programmatic Translation (Non-Widget Context)
+
+For cases where you need a translated string outside of a widget context (such as for `BottomNavigationBarItem` labels), use the `TranslatedString.of(context, key)` utility:
+
+```dart
+import 'package:banking_flutter_app/presentation/shared_widgets/translated_text.dart';
+
+// Example: BottomNavigationBarItem with localized label
+BottomNavigationBarItem(
+  icon: const Icon(Icons.home_filled),
+  label: TranslatedString.of(context, 'home.bottomNavigation.home'),
+)
+```
+
+- This method retrieves the current translation for the given key using the nearest Riverpod provider scope.
+- Supports value interpolation via the optional `values` parameter:
+
+```dart
+TranslatedString.of(context, 'hello_user', values: {'name': 'John'})
+```
+
+### 6. Language Selection
 
 The language selection is handled automatically in the settings screen. When a user selects a new language:
 
@@ -145,6 +166,10 @@ Common translation keys available:
 | `success` | Success | Éxito | 成功 |
 | `welcome` | Welcome | Bienvenido | 欢迎 |
 | `goodbye` | Goodbye | Adiós | 再见 |
+| `home.bottomNavigation.home` | Home | Inicio | 首页 |
+| `home.bottomNavigation.transfer` | Transfer | Transferir | 转账 |
+| `home.bottomNavigation.pay` | Pay | Pago | 支付 |
+| `home.bottomNavigation.help` | Help | Ayuda | 帮助 |
 
 ## Dynamic Value Interpolation
 
