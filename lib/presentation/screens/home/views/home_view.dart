@@ -1,20 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'package:banking_flutter_app/config/constants/routes.dart';
-import 'package:banking_flutter_app/presentation/providers/providers.dart';
 import 'package:banking_flutter_app/presentation/shared_widgets/widgets.dart';
 import 'package:banking_flutter_app/presentation/screens/home/widgets/widgets.dart';
 
-class HomeView extends ConsumerWidget {
+class HomeView extends StatelessWidget {
   // constructor
   const HomeView({super.key});
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
-    final isDarkMode = ref.watch(themeNotifierProvider).isDarkMode;
-
+  Widget build(BuildContext context) {
     return CustomScrollView(
       // Slivers
       //  are special Widgets for Scroll behavior
@@ -22,12 +18,7 @@ class HomeView extends ConsumerWidget {
       //  and instead of having a child we have slivers: []
       // A Sliver is a Widget that works directly with the ScrollView
       slivers: [
-        CustomSliverAppbar(
-          isDarkMode: isDarkMode,
-          toggleDarkMode: () {
-            ref.read(themeNotifierProvider.notifier).toggleDarkMode();
-          },
-        ),
+        const CustomSliverAppbar(),
         // SliverList requests a delegate
         // delegate: is the function used to create the slivers
         SliverList(
