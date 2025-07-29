@@ -146,21 +146,3 @@ class TranslatedElevatedButton extends ConsumerWidget {
     );
   }
 } 
-
-class TranslatedString {
-  static String of(BuildContext context, String key, {Map<String, dynamic>? values}) {
-    final container = ProviderScope.containerOf(context, listen: false);
-    final translationsState = container.read(translationsProvider);
-    String translation = translationsState.when(
-      data: (translations) => translations[key] ?? key,
-      loading: () => key,
-      error: (_, __) => key,
-    );
-    if (values != null) {
-      values.forEach((k, v) {
-        translation = translation.replaceAll('{$k}', v.toString());
-      });
-    }
-    return translation;
-  }
-} 

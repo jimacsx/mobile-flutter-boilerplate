@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:banking_flutter_app/config/constants/routes.dart';
-import 'package:banking_flutter_app/presentation/shared_widgets/translated_text.dart';
+import 'package:banking_flutter_app/presentation/providers/providers.dart';
 
-class CustomBottomNavigation extends StatelessWidget {
+class CustomBottomNavigation extends ConsumerWidget {
   
   final int currentIndex;
 
@@ -30,7 +31,13 @@ class CustomBottomNavigation extends StatelessWidget {
   }
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    // Get translations using the provider
+    final homeLabel = ref.watch(translationProvider('home.bottomNavigation.home'));
+    final transferLabel = ref.watch(translationProvider('home.bottomNavigation.transfer'));
+    final payLabel = ref.watch(translationProvider('home.bottomNavigation.pay'));
+    final helpLabel = ref.watch(translationProvider('home.bottomNavigation.help'));
+
     return BottomNavigationBar(
       // with only one Item does not work, minimum 2 Items are required
       elevation: 0,
@@ -39,19 +46,19 @@ class CustomBottomNavigation extends StatelessWidget {
       items: [
         BottomNavigationBarItem(
           icon: const Icon(Icons.home_filled),
-          label: TranslatedString.of(context, 'home.bottomNavigation.home'),
+          label: homeLabel,
         ),
         BottomNavigationBarItem(
           icon: const Icon(Icons.arrow_outward),
-          label: TranslatedString.of(context, 'home.bottomNavigation.transfer'),
+          label: transferLabel,
         ),
         BottomNavigationBarItem(
           icon: const Icon(Icons.credit_card),
-          label: TranslatedString.of(context, 'home.bottomNavigation.pay'),
+          label: payLabel,
         ),
         BottomNavigationBarItem(
           icon: const Icon(Icons.live_help_outlined),
-          label: TranslatedString.of(context, 'home.bottomNavigation.help'),
+          label: helpLabel,
         ),
       ],
       // With less than 4 elements: 

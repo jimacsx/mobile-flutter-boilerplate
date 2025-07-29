@@ -103,25 +103,39 @@ Access translations programmatically using the provider:
 final translation = ref.watch(translationProvider('welcome'));
 ```
 
-### 5. Programmatic Translation (Non-Widget Context)
+### 5. Programmatic Translation (Widget Context)
 
-For cases where you need a translated string outside of a widget context (such as for `BottomNavigationBarItem` labels), use the `TranslatedString.of(context, key)` utility:
+Access translations programmatically using the provider within a `ConsumerWidget`:
 
 ```dart
-import 'package:banking_flutter_app/presentation/shared_widgets/translated_text.dart';
-
-// Example: BottomNavigationBarItem with localized label
-BottomNavigationBarItem(
-  icon: const Icon(Icons.home_filled),
-  label: TranslatedString.of(context, 'home.bottomNavigation.home'),
-)
+class MyWidget extends ConsumerWidget {
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final translation = ref.watch(translationProvider('welcome'));
+    
+    return Text(translation);
+  }
+}
 ```
 
-- This method retrieves the current translation for the given key using the nearest Riverpod provider scope.
-- Supports value interpolation via the optional `values` parameter:
+For cases where you need a translated string in widgets that don't have direct access to Riverpod (such as `BottomNavigationBarItem` labels), convert the widget to a `ConsumerWidget`:
 
 ```dart
-TranslatedString.of(context, 'hello_user', values: {'name': 'John'})
+class CustomBottomNavigation extends ConsumerWidget {
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final homeLabel = ref.watch(translationProvider('home.bottomNavigation.home'));
+    
+    return BottomNavigationBar(
+      items: [
+        BottomNavigationBarItem(
+          icon: const Icon(Icons.home_filled),
+          label: homeLabel,
+        ),
+      ],
+    );
+  }
+}
 ```
 
 ### 6. Language Selection
