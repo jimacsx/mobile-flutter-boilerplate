@@ -118,6 +118,9 @@ class TranslationLocalDataSourceImpl implements TranslationLocalDataSource {
           'home.bottomNavigation.transfer': 'Transfer',
           'home.bottomNavigation.pay': 'Pay',
           'home.bottomNavigation.help': 'Help',
+          'hello_user': 'Hello {name}!',
+          'items_count': 'You have {count} {type}',
+          'save_item': 'Save {count} {item}',
         };
       case 'es':
         return {
@@ -196,6 +199,9 @@ class TranslationLocalDataSourceImpl implements TranslationLocalDataSource {
           'home.bottomNavigation.transfer': 'Transferir',
           'home.bottomNavigation.pay': 'Pagar',
           'home.bottomNavigation.help': 'Ayuda',
+          'hello_user': '¡Hola {name}!',
+          'items_count': 'Tienes {count} {type}',
+          'save_item': 'Guardar {count} {item}',
         };
       case 'zh':
         return {
@@ -274,6 +280,9 @@ class TranslationLocalDataSourceImpl implements TranslationLocalDataSource {
           'home.bottomNavigation.transfer': '转让',
           'home.bottomNavigation.pay': '薪酬',
           'home.bottomNavigation.help': '帮助',
+          'hello_user': '你好 {name}！',
+          'items_count': '你有 {count} 个 {type}',
+          'save_item': '保存 {count} 个 {item}',
         };
       default:
         return {};

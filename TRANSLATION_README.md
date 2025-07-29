@@ -118,6 +118,40 @@ class MyWidget extends ConsumerWidget {
 }
 ```
 
+### 6. Programmatic Translation with Interpolation
+
+For translations with dynamic values, use the `interpolatedTranslationProvider`:
+
+```dart
+class MyWidget extends ConsumerWidget {
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    // Simple translation
+    final welcome = ref.watch(translationProvider('welcome'));
+    
+    // Translation with interpolation
+    final greeting = ref.watch(interpolatedTranslationProvider((
+      key: 'hello_user',
+      values: {'name': 'John'}
+    )));
+    
+    // Multiple dynamic values
+    final itemCount = ref.watch(interpolatedTranslationProvider((
+      key: 'items_count',
+      values: {'count': 5, 'type': 'documents'}
+    )));
+    
+    return Column(
+      children: [
+        Text(welcome),
+        Text(greeting),
+        Text(itemCount),
+      ],
+    );
+  }
+}
+```
+
 For cases where you need a translated string in widgets that don't have direct access to Riverpod (such as `BottomNavigationBarItem` labels), convert the widget to a `ConsumerWidget`:
 
 ```dart
