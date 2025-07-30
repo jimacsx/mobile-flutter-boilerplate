@@ -1,11 +1,14 @@
 const Map<String, String> publicRoutes = {
   'onboarding': '/onboarding',
   'login': '/login',
+  'loginEmail': '/login-email',
+  'loginPassword': '/login-password',
   'resetPassword': '/reset-pasword',
   'signin': '/sign-in',
 };
 
-const initialLocationRoute = '/home/0';
+// const initialLocationRoute = '/home/0';
+const initialLocationRoute = '/login-email';
 
 const Map<String, String> privateRoutes = {
   'home': '/home/:page',
