@@ -1,22 +1,20 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:banking_flutter_app/config/constants/app_keys.dart';
 import 'package:banking_flutter_app/presentation/shared_widgets/translated_text.dart';
+import 'package:banking_flutter_app/presentation/providers/theme/theme_provider.dart';
 
-class CustomSliverAppbar extends StatelessWidget {
-  final GlobalKey<ScaffoldState> scaffoldKey;
-  final VoidCallback toggleDarkMode;
-  final bool isDarkMode;
+class CustomSliverAppbar extends ConsumerWidget {
 
   const CustomSliverAppbar({
     super.key,
-    required this.scaffoldKey,
-    required this.isDarkMode,
-    required this.toggleDarkMode,
   });
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     final colors = Theme.of(context).colorScheme;
     final String name = 'Bankify';
+    final isDarkModeAsync = ref.watch(isDarkModeProvider);
 
     return SliverAppBar(
       floating: true,
@@ -42,12 +40,16 @@ class CustomSliverAppbar extends StatelessWidget {
         Builder(
           builder:
               (context) => IconButton(
-                icon: Icon(
-                  isDarkMode
-                      ? Icons.light_mode_outlined
-                      : Icons.dark_mode_outlined,
+                icon: isDarkModeAsync.when(
+                  data: (isDarkMode) => Icon(
+                    isDarkMode
+                        ? Icons.light_mode_outlined
+                        : Icons.dark_mode_outlined,
+                  ),
+                  loading: () => const Icon(Icons.dark_mode_outlined),
+                  error: (_, __) => const Icon(Icons.dark_mode_outlined),
                 ),
-                onPressed: () => toggleDarkMode(),
+                onPressed: () => ref.read(themeNotifierProvider.notifier).toggleDarkMode(),
               ),
         ),
         Builder(
@@ -63,7 +65,8 @@ class CustomSliverAppbar extends StatelessWidget {
         Builder(
           builder:
               (context) => IconButton(
-                onPressed: () => scaffoldKey.currentState!.openEndDrawer(),
+                onPressed:
+                    () => homeViewScaffoldKey.currentState!.openEndDrawer(),
                 icon: Icon(Icons.menu_outlined, color: colors.onSurface),
               ),
         ),

@@ -108,6 +108,19 @@ class TranslationLocalDataSourceImpl implements TranslationLocalDataSource {
           'language_code': 'Code:',
           'language_name': 'Name:',
           'language_native_name': 'Native Name:',
+          'transfer.title': 'Transfer',
+          'transfer.body': 'Transfer',
+          'pay.title': 'Pay',
+          'pay.body': 'Pay',
+          'help.title': 'Help',
+          'help.body': 'Help',
+          'home.bottomNavigation.home': 'Home',
+          'home.bottomNavigation.transfer': 'Transfer',
+          'home.bottomNavigation.pay': 'Pay',
+          'home.bottomNavigation.help': 'Help',
+          'hello_user': 'Hello {name}!',
+          'items_count': 'You have {count} {type}',
+          'save_item': 'Save {count} {item}',
         };
       case 'es':
         return {
@@ -176,6 +189,19 @@ class TranslationLocalDataSourceImpl implements TranslationLocalDataSource {
           'language_code': 'Código:',
           'language_name': 'Nombre:',
           'language_native_name': 'Nombre Nativo:',
+          'transfer.title': 'Transferir',
+          'transfer.body': 'Transferencia',
+          'pay.title': 'Pagar',
+          'pay.body': 'Pago',
+          'help.title': 'Ayuda',
+          'help.body': 'Ayuda',
+          'home.bottomNavigation.home': 'Inicio',
+          'home.bottomNavigation.transfer': 'Transferir',
+          'home.bottomNavigation.pay': 'Pagar',
+          'home.bottomNavigation.help': 'Ayuda',
+          'hello_user': '¡Hola {name}!',
+          'items_count': 'Tienes {count} {type}',
+          'save_item': 'Guardar {count} {item}',
         };
       case 'zh':
         return {
@@ -244,6 +270,19 @@ class TranslationLocalDataSourceImpl implements TranslationLocalDataSource {
           'language_code': '代码:',
           'language_name': '名称:',
           'language_native_name': '本地名称:',
+          'transfer.title': '转账',
+          'transfer.body': '转账',
+          'pay.title': '支付',
+          'pay.body': '支付',
+          'help.title': '帮助',
+          'help.body': '帮助',
+          'home.bottomNavigation.home': '首页',
+          'home.bottomNavigation.transfer': '转让',
+          'home.bottomNavigation.pay': '薪酬',
+          'home.bottomNavigation.help': '帮助',
+          'hello_user': '你好 {name}！',
+          'items_count': '你有 {count} 个 {type}',
+          'save_item': '保存 {count} 个 {item}',
         };
       default:
         return {};

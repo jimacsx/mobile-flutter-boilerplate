@@ -95,7 +95,7 @@ TranslatedElevatedButton(
 )
 ```
 
-### 4. Programmatic Translation
+### 4. Programmatic Translation (Widget Context)
 
 Access translations programmatically using the provider:
 
@@ -103,7 +103,76 @@ Access translations programmatically using the provider:
 final translation = ref.watch(translationProvider('welcome'));
 ```
 
-### 5. Language Selection
+### 5. Programmatic Translation (Widget Context)
+
+Access translations programmatically using the provider within a `ConsumerWidget`:
+
+```dart
+class MyWidget extends ConsumerWidget {
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final translation = ref.watch(translationProvider('welcome'));
+    
+    return Text(translation);
+  }
+}
+```
+
+### 6. Programmatic Translation with Interpolation
+
+For translations with dynamic values, use the `interpolatedTranslationProvider`:
+
+```dart
+class MyWidget extends ConsumerWidget {
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    // Simple translation
+    final welcome = ref.watch(translationProvider('welcome'));
+    
+    // Translation with interpolation
+    final greeting = ref.watch(interpolatedTranslationProvider((
+      key: 'hello_user',
+      values: {'name': 'John'}
+    )));
+    
+    // Multiple dynamic values
+    final itemCount = ref.watch(interpolatedTranslationProvider((
+      key: 'items_count',
+      values: {'count': 5, 'type': 'documents'}
+    )));
+    
+    return Column(
+      children: [
+        Text(welcome),
+        Text(greeting),
+        Text(itemCount),
+      ],
+    );
+  }
+}
+```
+
+For cases where you need a translated string in widgets that don't have direct access to Riverpod (such as `BottomNavigationBarItem` labels), convert the widget to a `ConsumerWidget`:
+
+```dart
+class CustomBottomNavigation extends ConsumerWidget {
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final homeLabel = ref.watch(translationProvider('home.bottomNavigation.home'));
+    
+    return BottomNavigationBar(
+      items: [
+        BottomNavigationBarItem(
+          icon: const Icon(Icons.home_filled),
+          label: homeLabel,
+        ),
+      ],
+    );
+  }
+}
+```
+
+### 6. Language Selection
 
 The language selection is handled automatically in the settings screen. When a user selects a new language:
 
@@ -145,6 +214,10 @@ Common translation keys available:
 | `success` | Success | Éxito | 成功 |
 | `welcome` | Welcome | Bienvenido | 欢迎 |
 | `goodbye` | Goodbye | Adiós | 再见 |
+| `home.bottomNavigation.home` | Home | Inicio | 首页 |
+| `home.bottomNavigation.transfer` | Transfer | Transferir | 转账 |
+| `home.bottomNavigation.pay` | Pay | Pago | 支付 |
+| `home.bottomNavigation.help` | Help | Ayuda | 帮助 |
 
 ## Dynamic Value Interpolation
 

@@ -126,6 +126,10 @@ class AppTheme {
       bodyColor: colorScheme.onSurface,
       displayColor: colorScheme.onSurface,
     ),
+    // textTheme: TextTheme(
+    //   titleLarge: GoogleFonts.montserratAlternates(),
+    //   titleMedium: GoogleFonts.russoOne(fontSize: 25),
+    // ),
     scaffoldBackgroundColor: colorScheme.surface,
     canvasColor: colorScheme.surface,
     appBarTheme: const AppBarTheme(centerTitle: false),

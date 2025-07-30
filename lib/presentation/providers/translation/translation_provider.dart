@@ -127,4 +127,29 @@ final translationProvider = Provider.family<String, String>(
       error: (_, __) => key,
     );
   },
+);
+
+// Provider for interpolated translations with dynamic values
+final interpolatedTranslationProvider = Provider.family<String, ({String key, Map<String, dynamic>? values})>(
+  (ref, params) {
+    final translationsState = ref.watch(translationsProvider);
+    return translationsState.when(
+      data: (translations) {
+        String translation = translations[params.key] ?? params.key;
+        
+        if (params.values != null) {
+          params.values!.forEach((key, value) {
+            final placeholder = '{$key}';
+            if (translation.contains(placeholder)) {
+              translation = translation.replaceAll(placeholder, value.toString());
+            }
+          });
+        }
+        
+        return translation;
+      },
+      loading: () => params.key,
+      error: (_, __) => params.key,
+    );
+  },
 ); 
