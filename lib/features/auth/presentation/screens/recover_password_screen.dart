@@ -1,24 +1,25 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:banking_flutter_app/config/constants/routes.dart';
 import 'package:banking_flutter_app/features/shared/shared.dart';
 import 'package:banking_flutter_app/features/auth/auth.dart';
+import 'package:banking_flutter_app/presentation/shared_widgets/translated_text.dart';
+import 'package:banking_flutter_app/presentation/providers/translation/translation_provider.dart';
 
-class RecoverPasswordScreen extends StatelessWidget {
+class RecoverPasswordScreen extends ConsumerWidget {
   static const String name = 'recover_password_screen';
 
   const RecoverPasswordScreen({super.key});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     final colors = Theme.of(context).colorScheme;
 
     return GestureDetector(
       onTap: () => FocusManager.instance.primaryFocus?.unfocus(),
       child: Scaffold(
         appBar: AppBar(
-          title: Text('Recupera tu contraseña'),
+          title: TranslatedText('recover_password_screen.title'),
           leading: IconButton(
             icon: Icon(Icons.arrow_back),
             onPressed: () {
@@ -43,8 +44,8 @@ class RecoverPasswordScreen extends StatelessWidget {
                   children: [
                     const SizedBox(height: 16),
                     // * instructions
-                    Text(
-                      'Ingresa la dirección de correo electrónico asociada a tu cuenta y te enviaremos instrucciones para restablecer tu contraseña.',
+                    TranslatedText(
+                      'recover_password_screen.instructions',
                       style: TextStyle(
                         fontSize: 16,
                         fontWeight: FontWeight.w400,
@@ -77,8 +78,12 @@ class _RecoverPasswordForm extends ConsumerWidget {
         children: [
           // * Email's input
           CustomTextFormField(
-            label: 'Correo electrónico',
-            hint: 'Ingresa tu correo electrónico',
+            label: ref.watch(
+              translationProvider('recover_password_screen.email_label'),
+            ),
+            hint: ref.watch(
+              translationProvider('recover_password_screen.email_hint'),
+            ),
             keyboardType: TextInputType.emailAddress,
             onChanged:
                 ref.read(recoverPasswordFormProvider.notifier).onEmailChanged,
@@ -90,11 +95,13 @@ class _RecoverPasswordForm extends ConsumerWidget {
           const SizedBox(height: 24),
           // * Form's button
           CustomFilledButton(
-            text: 'Recuperar Contraseña',
+            text: ref.watch(
+              translationProvider('recover_password_screen.recover_button'),
+            ),
             onPressed: () {
               ref.read(recoverPasswordFormProvider.notifier).onFormSubmit();
               if (recoverPasswordForm.isValid) {
-                context.push(publicRoutes['loginPassword']!);
+                context.pop();
               }
             },
           ),
