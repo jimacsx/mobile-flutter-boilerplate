@@ -130,7 +130,19 @@ class AppTheme {
     // ),
     scaffoldBackgroundColor: colorScheme.surface,
     canvasColor: colorScheme.surface,
-    appBarTheme: const AppBarTheme(centerTitle: false),
+    appBarTheme: AppBarTheme(
+      centerTitle: false,
+      titleTextStyle: TextStyle(
+        color: colorScheme.onSurface,
+        fontSize: 22.0,
+        fontWeight: FontWeight.w400,
+      ),
+      iconTheme: IconThemeData(
+        color: colorScheme.onSurface,
+        size: 24.0,
+        opacity: 0.9,
+      ),
+    ),
   );
 
   ThemeData getTheme() => isDarkMode ? dark() : light();

@@ -79,7 +79,9 @@ class PasswordScreen extends ConsumerWidget {
                     const SizedBox(height: 16),
                     // * I'm not button
                     CustomTextButton(
-                      text: ref.watch(translationProvider('password_screen.not_me_button')),
+                      text: ref.watch(
+                        translationProvider('password_screen.not_me_button'),
+                      ),
                       onPressed: () {
                         context.go(publicRoutes['loginEmail']!);
                       },
@@ -95,8 +97,14 @@ class PasswordScreen extends ConsumerWidget {
                     ),
                     // * Forgot your password's button
                     CustomTextButton(
-                      text: ref.watch(translationProvider('password_screen.forgot_password_button')),
-                      onPressed: () {},
+                      text: ref.watch(
+                        translationProvider(
+                          'password_screen.forgot_password_button',
+                        ),
+                      ),
+                      onPressed: () {
+                        context.push(publicRoutes['recoverPassword']!);
+                      },
                     ),
                   ],
                 ),
@@ -121,8 +129,12 @@ class _PasswordForm extends ConsumerWidget {
         children: [
           // * Password's input
           CustomTextFormField(
-            label: ref.watch(translationProvider('password_screen.password_label')),
-            hint: ref.watch(translationProvider('password_screen.password_hint')),
+            label: ref.watch(
+              translationProvider('password_screen.password_label'),
+            ),
+            hint: ref.watch(
+              translationProvider('password_screen.password_hint'),
+            ),
             obscureText: true,
             onChanged:
                 ref.read(loginPasswordFormProvider.notifier).onPasswordChanged,
@@ -134,7 +146,9 @@ class _PasswordForm extends ConsumerWidget {
           const SizedBox(height: 24),
           // * Form's button
           CustomFilledButton(
-            text: ref.watch(translationProvider('password_screen.login_button')),
+            text: ref.watch(
+              translationProvider('password_screen.login_button'),
+            ),
             onPressed: () {
               ref.read(loginPasswordFormProvider.notifier).onFormSubmit();
               if (loginPasswordForm.isValid) {

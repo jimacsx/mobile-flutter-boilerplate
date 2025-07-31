@@ -47,6 +47,11 @@ final appRouter = GoRouter(
       name: PasswordScreen.name,
       builder: (context, state) => const PasswordScreen(),
     ),
+    GoRoute(
+      path: publicRoutes['recoverPassword']!,
+      name: RecoverPasswordScreen.name,
+      builder: (context, state) => const RecoverPasswordScreen(),
+    ),
     // ------ widget routes -------
     GoRoute(
       path: widgetRoutes['buttons']!,

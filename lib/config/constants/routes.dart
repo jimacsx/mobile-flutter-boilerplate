@@ -3,7 +3,7 @@ const Map<String, String> publicRoutes = {
   'login': '/login',
   'loginEmail': '/login-email',
   'loginPassword': '/login-password',
-  'resetPassword': '/reset-pasword',
+  'recoverPassword': '/recover-pasword',
   'signin': '/sign-in',
 };
 
