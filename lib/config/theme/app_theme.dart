@@ -1,8 +1,6 @@
 import "package:flutter/material.dart";
 import "package:google_fonts/google_fonts.dart";
 
-import "package:banking_flutter_app/config/theme/input_theme.dart";
-
 class AppTheme {
   final bool isDarkMode;
 
@@ -132,8 +130,19 @@ class AppTheme {
     // ),
     scaffoldBackgroundColor: colorScheme.surface,
     canvasColor: colorScheme.surface,
-    appBarTheme: const AppBarTheme(centerTitle: false),
-    inputDecorationTheme: InputTheme().theme(),
+    appBarTheme: AppBarTheme(
+      centerTitle: false,
+      titleTextStyle: TextStyle(
+        color: colorScheme.onSurface,
+        fontSize: 22.0,
+        fontWeight: FontWeight.w400,
+      ),
+      iconTheme: IconThemeData(
+        color: colorScheme.onSurface,
+        size: 24.0,
+        opacity: 0.9,
+      ),
+    ),
   );
 
   ThemeData getTheme() => isDarkMode ? dark() : light();

@@ -121,6 +121,25 @@ class TranslationLocalDataSourceImpl implements TranslationLocalDataSource {
           'hello_user': 'Hello {name}!',
           'items_count': 'You have {count} {type}',
           'save_item': 'Save {count} {item}',
+          // Email screen translations
+          'email_screen.greeting': 'Hello!',
+          'email_screen.email_label': 'Email',
+          'email_screen.email_hint': 'Enter your email',
+          'email_screen.continue_button': 'Continue',
+          'email_screen.create_account_button': 'Create an Account',
+          // Password screen translations
+          'password_screen.greeting': 'Hello {name}!',
+          'password_screen.not_me_button': 'Not me',
+          'password_screen.password_label': 'Password',
+          'password_screen.password_hint': 'Enter your password',
+          'password_screen.login_button': 'Login',
+          'password_screen.forgot_password_button': 'Forgot your password?',
+          // Recover password screen translations
+          'recover_password_screen.title': 'Recover your password',
+          'recover_password_screen.instructions': 'Enter the email address associated with your account and we will send you instructions to reset your password.',
+          'recover_password_screen.email_label': 'Email',
+          'recover_password_screen.email_hint': 'Enter your email',
+          'recover_password_screen.recover_button': 'Recover Password',
         };
       case 'es':
         return {
@@ -202,6 +221,25 @@ class TranslationLocalDataSourceImpl implements TranslationLocalDataSource {
           'hello_user': '¡Hola {name}!',
           'items_count': 'Tienes {count} {type}',
           'save_item': 'Guardar {count} {item}',
+          // Email screen translations
+          'email_screen.greeting': '¡Hola!',
+          'email_screen.email_label': 'Correo electrónico',
+          'email_screen.email_hint': 'Ingresa tu correo electrónico',
+          'email_screen.continue_button': 'Continuar',
+          'email_screen.create_account_button': 'Crear una Cuenta',
+          // Password screen translations
+          'password_screen.greeting': '¡Hola {name}!',
+          'password_screen.not_me_button': 'No soy yo',
+          'password_screen.password_label': 'Contraseña',
+          'password_screen.password_hint': 'Ingresa tu contraseña',
+          'password_screen.login_button': 'Iniciar Sesión',
+          'password_screen.forgot_password_button': '¿Olvidaste tu contraseña?',
+          // Recover password screen translations
+          'recover_password_screen.title': 'Recupera tu contraseña',
+          'recover_password_screen.instructions': 'Ingresa la dirección de correo electrónico asociada a tu cuenta y te enviaremos instrucciones para restablecer tu contraseña.',
+          'recover_password_screen.email_label': 'Correo electrónico',
+          'recover_password_screen.email_hint': 'Ingresa tu correo electrónico',
+          'recover_password_screen.recover_button': 'Recuperar Contraseña',
         };
       case 'zh':
         return {
@@ -283,6 +321,25 @@ class TranslationLocalDataSourceImpl implements TranslationLocalDataSource {
           'hello_user': '你好 {name}！',
           'items_count': '你有 {count} 个 {type}',
           'save_item': '保存 {count} 个 {item}',
+          // Email screen translations
+          'email_screen.greeting': '你好！',
+          'email_screen.email_label': '电子邮件',
+          'email_screen.email_hint': '输入您的电子邮件',
+          'email_screen.continue_button': '继续',
+          'email_screen.create_account_button': '创建账户',
+          // Password screen translations
+          'password_screen.greeting': '你好 {name}！',
+          'password_screen.not_me_button': '不是我',
+          'password_screen.password_label': '密码',
+          'password_screen.password_hint': '输入您的密码',
+          'password_screen.login_button': '登录',
+          'password_screen.forgot_password_button': '忘记密码？',
+          // Recover password screen translations
+          'recover_password_screen.title': '恢复密码',
+          'recover_password_screen.instructions': '输入与您的账户关联的电子邮件地址，我们将向您发送重置密码的说明。',
+          'recover_password_screen.email_label': '电子邮件',
+          'recover_password_screen.email_hint': '输入您的电子邮件',
+          'recover_password_screen.recover_button': '恢复密码',
         };
       default:
         return {};
