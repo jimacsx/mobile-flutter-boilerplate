@@ -4,14 +4,16 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:banking_flutter_app/config/constants/routes.dart';
 import 'package:banking_flutter_app/features/shared/shared.dart';
 import 'package:banking_flutter_app/features/auth/auth.dart';
+import 'package:banking_flutter_app/presentation/shared_widgets/translated_text.dart';
+import 'package:banking_flutter_app/presentation/providers/translation/translation_provider.dart';
 
-class PasswordScreen extends StatelessWidget {
+class PasswordScreen extends ConsumerWidget {
   static const String name = 'password_login_screen';
 
   const PasswordScreen({super.key});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     final colors = Theme.of(context).colorScheme;
 
     final String name = 'Bankify';
@@ -56,8 +58,9 @@ class PasswordScreen extends StatelessWidget {
                     CustomCircleAvatar(text: name[0].toUpperCase()),
                     const SizedBox(height: 16),
                     // * Greetings
-                    Text(
-                      '¡Hola $name!',
+                    TranslatedText(
+                      'password_screen.greeting',
+                      values: {'name': name},
                       style: TextStyle(
                         fontSize: 36,
                         fontWeight: FontWeight.w700,
@@ -76,7 +79,7 @@ class PasswordScreen extends StatelessWidget {
                     const SizedBox(height: 16),
                     // * I'm not button
                     CustomTextButton(
-                      text: 'No soy yo',
+                      text: ref.watch(translationProvider('password_screen.not_me_button')),
                       onPressed: () {
                         context.go(publicRoutes['loginEmail']!);
                       },
@@ -92,7 +95,7 @@ class PasswordScreen extends StatelessWidget {
                     ),
                     // * Forgot your password's button
                     CustomTextButton(
-                      text: '¿Olvidaste tu contraseña?',
+                      text: ref.watch(translationProvider('password_screen.forgot_password_button')),
                       onPressed: () {},
                     ),
                   ],
@@ -118,8 +121,8 @@ class _PasswordForm extends ConsumerWidget {
         children: [
           // * Password's input
           CustomTextFormField(
-            label: 'Contraseña',
-            hint: 'Ingresa tu contraseña',
+            label: ref.watch(translationProvider('password_screen.password_label')),
+            hint: ref.watch(translationProvider('password_screen.password_hint')),
             obscureText: true,
             onChanged:
                 ref.read(loginPasswordFormProvider.notifier).onPasswordChanged,
@@ -131,7 +134,7 @@ class _PasswordForm extends ConsumerWidget {
           const SizedBox(height: 24),
           // * Form's button
           CustomFilledButton(
-            text: 'Iniciar Sesión',
+            text: ref.watch(translationProvider('password_screen.login_button')),
             onPressed: () {
               ref.read(loginPasswordFormProvider.notifier).onFormSubmit();
               if (loginPasswordForm.isValid) {

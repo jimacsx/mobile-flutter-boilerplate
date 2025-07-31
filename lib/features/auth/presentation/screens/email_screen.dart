@@ -4,14 +4,16 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:banking_flutter_app/config/constants/routes.dart';
 import 'package:banking_flutter_app/features/shared/shared.dart';
 import 'package:banking_flutter_app/features/auth/auth.dart';
+import 'package:banking_flutter_app/presentation/shared_widgets/translated_text.dart';
+import 'package:banking_flutter_app/presentation/providers/translation/translation_provider.dart';
 
-class EmailScreen extends StatelessWidget {
+class EmailScreen extends ConsumerWidget {
   static const String name = 'email_login_screen';
 
   const EmailScreen({super.key});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     final colors = Theme.of(context).colorScheme;
 
     return GestureDetector(
@@ -49,8 +51,8 @@ class EmailScreen extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     // * Greetings
-                    Text(
-                      '¡Hola!',
+                    TranslatedText(
+                      'email_screen.greeting',
                       style: TextStyle(
                         fontSize: 36,
                         fontWeight: FontWeight.w700,
@@ -67,7 +69,7 @@ class EmailScreen extends StatelessWidget {
                     ),
                     // * Register's button
                     CustomOutlinedButton(
-                      text: 'Crear una Cuenta',
+                      text: ref.watch(translationProvider('email_screen.create_account_button')),
                       onPressed: () {},
                     ),
                   ],
@@ -93,8 +95,8 @@ class _EmailForm extends ConsumerWidget {
         children: [
           // * Email's input
           CustomTextFormField(
-            label: 'Correo electrónico',
-            hint: 'Ingresa tu correo electrónico',
+            label: ref.watch(translationProvider('email_screen.email_label')),
+            hint: ref.watch(translationProvider('email_screen.email_hint')),
             keyboardType: TextInputType.emailAddress,
             onChanged: ref.read(loginEmailFormProvider.notifier).onEmailChanged,
             errorMessage: // Only displays an error if submit is clicked and there is an error
@@ -105,7 +107,7 @@ class _EmailForm extends ConsumerWidget {
           const SizedBox(height: 24),
           // * Form's button
           CustomFilledButton(
-            text: 'Continuar',
+            text: ref.watch(translationProvider('email_screen.continue_button')),
             onPressed: () {
               ref.read(loginEmailFormProvider.notifier).onFormSubmit();
               if (loginEmailForm.isValid) {
