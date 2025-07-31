@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:banking_flutter_app/config/constants/app_keys.dart';
+import 'package:banking_flutter_app/config/config.dart';
 import 'package:banking_flutter_app/presentation/screens/home/views/views.dart';
 import 'package:banking_flutter_app/presentation/screens/home/widgets/widgets.dart';
 

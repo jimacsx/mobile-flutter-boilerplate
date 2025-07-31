@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:banking_flutter_app/config/constants/routes.dart';
+import 'package:banking_flutter_app/config/config.dart';
 import 'package:banking_flutter_app/features/shared/shared.dart';
 import 'package:banking_flutter_app/features/auth/auth.dart';
 import 'package:banking_flutter_app/presentation/shared_widgets/translated_text.dart';

@@ -1,5 +1,5 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:banking_flutter_app/config/theme/app_theme.dart';
+import 'package:banking_flutter_app/config/config.dart';
 import 'package:banking_flutter_app/domain/repositories/theme_repository.dart';
 import 'package:banking_flutter_app/data/repositories/theme_repository_impl.dart';
 import 'package:banking_flutter_app/data/datasources/local/theme_local_datasource.dart';
