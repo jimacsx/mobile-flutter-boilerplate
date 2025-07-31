@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:banking_flutter_app/config/constants/routes.dart';
 import 'package:banking_flutter_app/features/shared/shared.dart';
+import 'package:banking_flutter_app/features/auth/auth.dart';
 
 class EmailScreen extends StatelessWidget {
   static const String name = 'email_login_screen';
@@ -79,11 +81,13 @@ class EmailScreen extends StatelessWidget {
   }
 }
 
-class _EmailForm extends StatelessWidget {
+class _EmailForm extends ConsumerWidget {
   const _EmailForm();
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final loginEmailForm = ref.watch(loginEmailFormProvider);
+
     return Form(
       child: Column(
         children: [
@@ -92,14 +96,21 @@ class _EmailForm extends StatelessWidget {
             label: 'Correo electrónico',
             hint: 'Ingresa tu correo electrónico',
             keyboardType: TextInputType.emailAddress,
-            errorMessage: null,
+            onChanged: ref.read(loginEmailFormProvider.notifier).onEmailChanged,
+            errorMessage: // Only displays an error if submit is clicked and there is an error
+                loginEmailForm.isFormPosted
+                    ? loginEmailForm.email.errorMessage
+                    : null,
           ),
           const SizedBox(height: 24),
           // * Form's button
           CustomFilledButton(
             text: 'Continuar',
             onPressed: () {
-              context.push(publicRoutes['loginPassword']!);
+              ref.read(loginEmailFormProvider.notifier).onFormSubmit();
+              if (loginEmailForm.isValid) {
+                context.push(publicRoutes['loginPassword']!);
+              }
             },
           ),
         ],

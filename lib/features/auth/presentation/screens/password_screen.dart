@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:banking_flutter_app/config/constants/routes.dart';
 import 'package:banking_flutter_app/features/shared/shared.dart';
+import 'package:banking_flutter_app/features/auth/auth.dart';
 
 class PasswordScreen extends StatelessWidget {
   static const String name = 'password_login_screen';
@@ -10,7 +12,6 @@ class PasswordScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    
     final colors = Theme.of(context).colorScheme;
 
     final String name = 'Bankify';
@@ -52,9 +53,7 @@ class PasswordScreen extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     // * Avatar
-                    CustomCircleAvatar(
-                      text: name[0].toUpperCase(),
-                    ),
+                    CustomCircleAvatar(text: name[0].toUpperCase()),
                     const SizedBox(height: 16),
                     // * Greetings
                     Text(
@@ -104,16 +103,16 @@ class PasswordScreen extends StatelessWidget {
         ),
       ),
     );
-
   }
 }
 
-class _PasswordForm extends StatelessWidget {
-  
+class _PasswordForm extends ConsumerWidget {
   const _PasswordForm();
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final loginPasswordForm = ref.watch(loginPasswordFormProvider);
+
     return Form(
       child: Column(
         children: [
@@ -122,13 +121,23 @@ class _PasswordForm extends StatelessWidget {
             label: 'Contraseña',
             hint: 'Ingresa tu contraseña',
             obscureText: true,
-            errorMessage: null,
+            onChanged:
+                ref.read(loginPasswordFormProvider.notifier).onPasswordChanged,
+            errorMessage: // Only displays an error if submit is clicked and there is an error
+                loginPasswordForm.isFormPosted
+                    ? loginPasswordForm.password.errorMessage
+                    : null,
           ),
           const SizedBox(height: 24),
           // * Form's button
           CustomFilledButton(
             text: 'Iniciar Sesión',
-            onPressed: () {},
+            onPressed: () {
+              ref.read(loginPasswordFormProvider.notifier).onFormSubmit();
+              if (loginPasswordForm.isValid) {
+                context.go(homeViewsRoutes['home']!);
+              }
+            },
           ),
         ],
       ),
