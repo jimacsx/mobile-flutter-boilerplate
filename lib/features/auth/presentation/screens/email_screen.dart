@@ -69,7 +69,11 @@ class EmailScreen extends ConsumerWidget {
                     ),
                     // * Register's button
                     CustomOutlinedButton(
-                      text: ref.watch(translationProvider('email_screen.create_account_button')),
+                      text: ref.watch(
+                        translationProvider(
+                          'email_screen.create_account_button',
+                        ),
+                      ),
                       onPressed: () {},
                     ),
                   ],
@@ -107,7 +111,9 @@ class _EmailForm extends ConsumerWidget {
           const SizedBox(height: 24),
           // * Form's button
           CustomFilledButton(
-            text: ref.watch(translationProvider('email_screen.continue_button')),
+            text: ref.watch(
+              translationProvider('email_screen.continue_button'),
+            ),
             onPressed: () {
               ref.read(loginEmailFormProvider.notifier).onFormSubmit();
               if (loginEmailForm.isValid) {

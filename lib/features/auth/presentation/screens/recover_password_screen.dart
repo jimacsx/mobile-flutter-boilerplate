@@ -1,6 +1,9 @@
-import 'package:banking_flutter_app/features/shared/shared.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:banking_flutter_app/config/constants/routes.dart';
+import 'package:banking_flutter_app/features/shared/shared.dart';
+import 'package:banking_flutter_app/features/auth/auth.dart';
 
 class RecoverPasswordScreen extends StatelessWidget {
   static const String name = 'recover_password_screen';
@@ -62,11 +65,13 @@ class RecoverPasswordScreen extends StatelessWidget {
   }
 }
 
-class _RecoverPasswordForm extends StatelessWidget {
+class _RecoverPasswordForm extends ConsumerWidget {
   const _RecoverPasswordForm();
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final recoverPasswordForm = ref.watch(recoverPasswordFormProvider);
+
     return Form(
       child: Column(
         children: [
@@ -75,10 +80,24 @@ class _RecoverPasswordForm extends StatelessWidget {
             label: 'Correo electrónico',
             hint: 'Ingresa tu correo electrónico',
             keyboardType: TextInputType.emailAddress,
+            onChanged:
+                ref.read(recoverPasswordFormProvider.notifier).onEmailChanged,
+            errorMessage: // Only displays an error if submit is clicked and there is an error
+                recoverPasswordForm.isFormPosted
+                    ? recoverPasswordForm.email.errorMessage
+                    : null,
           ),
           const SizedBox(height: 24),
           // * Form's button
-          CustomFilledButton(text: 'Recuperar Contraseña', onPressed: () {}),
+          CustomFilledButton(
+            text: 'Recuperar Contraseña',
+            onPressed: () {
+              ref.read(recoverPasswordFormProvider.notifier).onFormSubmit();
+              if (recoverPasswordForm.isValid) {
+                context.push(publicRoutes['loginPassword']!);
+              }
+            },
+          ),
         ],
       ),
     );
