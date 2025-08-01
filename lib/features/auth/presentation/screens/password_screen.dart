@@ -15,9 +15,12 @@ class PasswordScreen extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final colors = Theme.of(context).colorScheme;
-
-    final String name = 'Bankify';
-    final String accountNumber = '**** 1505';
+    final emailValidationState = ref.watch(emailValidationProvider);
+    
+    // Obtener información del usuario validado
+    final user = emailValidationState.validatedUser;
+    final String name = user?.displayName ?? 'Usuario';
+    final String accountNumber = user?.accountNumber ?? '**** 1505';
 
     return GestureDetector(
       onTap: () => FocusManager.instance.primaryFocus?.unfocus(),
@@ -83,6 +86,10 @@ class PasswordScreen extends ConsumerWidget {
                         translationProvider('password_screen.not_me_button'),
                       ),
                       onPressed: () {
+                        // Limpiar la validación del email al regresar
+                        ref.read(emailValidationProvider.notifier).clearValidation();
+                        // Limpiar el estado de login
+                        ref.read(loginStateProvider.notifier).setLoading(false);
                         context.go(publicRoutes['loginEmail']!);
                       },
                       fontSize: 14,
@@ -122,7 +129,10 @@ class _PasswordForm extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final colors = Theme.of(context).colorScheme;
     final loginPasswordForm = ref.watch(loginPasswordFormProvider);
+    final emailValidationState = ref.watch(emailValidationProvider);
+    final loginState = ref.watch(loginStateProvider);
 
     return Form(
       child: Column(
@@ -146,15 +156,58 @@ class _PasswordForm extends ConsumerWidget {
           const SizedBox(height: 24),
           // * Form's button
           CustomFilledButton(
-            text: ref.watch(
-              translationProvider('password_screen.login_button'),
-            ),
-            onPressed: () {
-              ref.read(loginPasswordFormProvider.notifier).onFormSubmit();
-              if (loginPasswordForm.isValid) {
-                context.go(homeViewsRoutes['home']!);
-              }
-            },
+            isLoading: loginState.isLoading, // Estado de carga controlado por loginStateProvider
+            text: loginState.isLoading 
+              ? 'Iniciando sesión...' 
+              : ref.watch(translationProvider('password_screen.login_button')),
+            onPressed: (loginState.isLoading || emailValidationState.validatedUser == null) 
+              ? null 
+              : () async {
+                  ref.read(loginPasswordFormProvider.notifier).onFormSubmit();
+                  if (loginPasswordForm.isValid && emailValidationState.validatedUser != null) {
+                    // Activar estado de carga
+                    ref.read(loginStateProvider.notifier).setLoading(true);
+                    
+                    try {
+                      // Validar credenciales
+                      final user = await ref.read(currentUserProvider.notifier).validateCredentials(
+                        emailValidationState.validatedUser!.email,
+                        loginPasswordForm.password.value,
+                      );
+                      
+                      if (user != null) {
+                        // Credenciales válidas, ir al home
+                        if (context.mounted) {
+                          context.go(homeViewsRoutes['home']!);
+                        }
+                      } else {
+                        // Credenciales inválidas, mostrar error
+                        if (context.mounted) {
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            SnackBar(
+                              content: Text('Contraseña incorrecta'),
+                              backgroundColor: colors.error,
+                            ),
+                          );
+                        }
+                      }
+                    } catch (error) {
+                      // Manejar errores
+                      if (context.mounted) {
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          SnackBar(
+                            content: Text('Error al iniciar sesión'),
+                            backgroundColor: colors.error,
+                            duration: Duration(seconds: 8), // default to 4s
+                          ),
+                        );
+                      }
+                    } finally {
+                      // Desactivar estado de carga
+                      ref.read(loginStateProvider.notifier).setLoading(false);
+                    }
+                  }
+                },
           ),
         ],
       ),
