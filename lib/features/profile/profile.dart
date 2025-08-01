@@ -1,9 +1,3 @@
-// domain
-export 'domain/domain.dart';
-
-// data
-export 'data/data.dart';
-
 // providers
 export 'presentation/providers/providers.dart';
 

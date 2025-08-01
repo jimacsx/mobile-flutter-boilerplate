@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:banking_flutter_app/config/constants/routes.dart';
+import 'package:banking_flutter_app/config/config.dart';
 import 'package:banking_flutter_app/features/shared/shared.dart';
 import 'package:banking_flutter_app/features/auth/auth.dart';
 import 'package:banking_flutter_app/presentation/shared_widgets/translated_text.dart';
@@ -92,7 +92,9 @@ class _EmailForm extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final colors = Theme.of(context).colorScheme;
     final loginEmailForm = ref.watch(loginEmailFormProvider);
+    final emailValidationState = ref.watch(emailValidationProvider);
 
     return Form(
       child: Column(
@@ -111,15 +113,41 @@ class _EmailForm extends ConsumerWidget {
           const SizedBox(height: 24),
           // * Form's button
           CustomFilledButton(
-            text: ref.watch(
-              translationProvider('email_screen.continue_button'),
-            ),
-            onPressed: () {
-              ref.read(loginEmailFormProvider.notifier).onFormSubmit();
-              if (loginEmailForm.isValid) {
-                context.push(publicRoutes['loginPassword']!);
-              }
-            },
+            isLoading: emailValidationState.isLoading,
+            text: emailValidationState.isLoading 
+              ? 'Validando...' 
+              : ref.watch(translationProvider('email_screen.continue_button')),
+            onPressed: emailValidationState.isLoading 
+              ? null 
+              : () async {
+                  ref.read(loginEmailFormProvider.notifier).onFormSubmit();
+                  if (loginEmailForm.isValid) {
+                    // Validar email con el servicio
+                    await ref.read(emailValidationProvider.notifier).validateEmail(
+                      loginEmailForm.email.value,
+                    );
+                    
+                    // Verificar el resultado de la validación
+                    final currentState = ref.read(emailValidationProvider);
+                    if (currentState.validatedUser != null) {
+                      // Email válido, continuar a la pantalla de contraseña
+                      if (context.mounted) {
+                        context.push(publicRoutes['loginPassword']!);
+                      }
+                    } else if (currentState.errorMessage != null) {
+                      // Mostrar error en snackbar
+                      if (context.mounted) {
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          SnackBar(
+                            content: Text(currentState.errorMessage!),
+                            backgroundColor: colors.error,
+                            duration: Duration(seconds: 8), // default to 4s
+                          ),
+                        );
+                      }
+                    }
+                  }
+                },
           ),
         ],
       ),

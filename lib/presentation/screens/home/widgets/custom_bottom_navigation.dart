@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
-import 'package:banking_flutter_app/config/constants/routes.dart';
+import 'package:banking_flutter_app/config/config.dart';
 import 'package:banking_flutter_app/presentation/providers/providers.dart';
 
 class CustomBottomNavigation extends ConsumerWidget {

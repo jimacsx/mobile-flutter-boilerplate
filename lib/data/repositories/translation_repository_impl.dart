@@ -19,7 +19,7 @@ class TranslationRepositoryImpl implements TranslationRepository {
   @override
   Future<Language> getCurrentLanguage() async {
     final currentLanguage = await localDataSource.getCurrentLanguage();
-    return currentLanguage ?? const Language(code: 'en', name: 'English', nativeName: 'English');
+    return currentLanguage ?? const Language(code: 'es', name: 'Spanish', nativeName: 'Español');
   }
 
   @override

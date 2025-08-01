@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:banking_flutter_app/config/constants/routes.dart';
+import 'package:banking_flutter_app/config/config.dart';
 
 class DrawerScreen extends StatelessWidget {
   static const String name = 'drawer_screen';

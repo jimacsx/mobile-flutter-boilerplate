@@ -1,13 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import 'package:banking_flutter_app/config/config.dart';
 import 'package:banking_flutter_app/presentation/providers/providers.dart';
-import 'package:banking_flutter_app/config/router/app_router.dart';
-import 'package:banking_flutter_app/config/theme/app_theme.dart';
 
 Future<void> main() async {
-  await dotenv.load(fileName: ".env");
+  await Environment.initEnvironment();
 
   runApp(
     const ProviderScope(child: MainApp()),

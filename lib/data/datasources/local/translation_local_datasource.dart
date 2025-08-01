@@ -140,6 +140,9 @@ class TranslationLocalDataSourceImpl implements TranslationLocalDataSource {
           'recover_password_screen.email_label': 'Email',
           'recover_password_screen.email_hint': 'Enter your email',
           'recover_password_screen.recover_button': 'Recover Password',
+          // Profile screen translations
+          'profile_screen.title': 'User Profile',
+          'profile_screen.last_session': 'Last session: {date} — {time} ({timezone})',
         };
       case 'es':
         return {
@@ -240,6 +243,9 @@ class TranslationLocalDataSourceImpl implements TranslationLocalDataSource {
           'recover_password_screen.email_label': 'Correo electrónico',
           'recover_password_screen.email_hint': 'Ingresa tu correo electrónico',
           'recover_password_screen.recover_button': 'Recuperar Contraseña',
+          // Profile screen translations
+          'profile_screen.title': 'Perfil de Usuario',
+          'profile_screen.last_session': 'Última sesión: {date} — {time} ({timezone})',
         };
       case 'zh':
         return {
@@ -340,6 +346,9 @@ class TranslationLocalDataSourceImpl implements TranslationLocalDataSource {
           'recover_password_screen.email_label': '电子邮件',
           'recover_password_screen.email_hint': '输入您的电子邮件',
           'recover_password_screen.recover_button': '恢复密码',
+          // Profile screen translations
+          'profile_screen.title': '用户资料',
+          'profile_screen.last_session': '上次会话：{date} — {time} ({timezone})',
         };
       default:
         return {};

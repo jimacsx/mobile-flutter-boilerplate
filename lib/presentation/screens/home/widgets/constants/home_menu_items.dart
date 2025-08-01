@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 // import 'package:flutter/material.dart' show IconData;
-import 'package:banking_flutter_app/config/constants/routes.dart';
+import 'package:banking_flutter_app/config/config.dart';
 
 class MenuItem {
   final String link;
