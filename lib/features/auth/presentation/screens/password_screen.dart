@@ -17,7 +17,7 @@ class PasswordScreen extends ConsumerWidget {
     final colors = Theme.of(context).colorScheme;
     final emailValidationState = ref.watch(emailValidationProvider);
     
-    // Obtener información del usuario validado
+    // Get information from the validated user
     final user = emailValidationState.validatedUser;
     final String name = user?.displayName ?? 'Usuario';
     final String accountNumber = user?.accountNumber ?? '**** 1505';

@@ -3,6 +3,7 @@ import 'package:banking_flutter_app/config/config.dart';
 import 'package:banking_flutter_app/presentation/screens/screens.dart';
 import 'package:banking_flutter_app/presentation/custom-widgets/screens/screens.dart';
 import 'package:banking_flutter_app/features/auth/auth.dart';
+import 'package:banking_flutter_app/features/profile/profile.dart';
 
 final appRouter = GoRouter(
   initialLocation: initialLocationRoute,

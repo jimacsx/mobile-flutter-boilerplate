@@ -7,7 +7,6 @@ export 'package:banking_flutter_app/presentation/custom-widgets/screens/counter/
 export 'package:banking_flutter_app/presentation/custom-widgets/screens/infinite_scroll/infinite_scroll_screen.dart';
 export 'package:banking_flutter_app/presentation/custom-widgets/screens/navigation/bottom_bar_screen.dart';
 export 'package:banking_flutter_app/presentation/custom-widgets/screens/navigation/drawer_screen.dart';
-export 'package:banking_flutter_app/presentation/custom-widgets/screens/navigation/profile_screen.dart';
 export 'package:banking_flutter_app/presentation/custom-widgets/screens/progress/progress_screen.dart';
 export 'package:banking_flutter_app/presentation/custom-widgets/screens/snackbar/snackbar_screen.dart';
 export 'package:banking_flutter_app/presentation/custom-widgets/screens/ui_controls/ui_controls_screen.dart';
