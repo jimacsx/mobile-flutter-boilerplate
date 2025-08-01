@@ -1,25 +1,30 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:banking_flutter_app/config/config.dart';
 import 'package:banking_flutter_app/features/shared/shared.dart';
+import 'package:banking_flutter_app/presentation/shared_widgets/translated_text.dart';
+import 'package:banking_flutter_app/presentation/providers/translation/translation_provider.dart';
 
-class ProfileScreen extends StatelessWidget {
+class ProfileScreen extends ConsumerWidget {
   static const String name = 'profile_screen';
 
   const ProfileScreen({super.key});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     final colors = Theme.of(context).colorScheme;
 
     // Get information from the validated user
     final String name = 'Hector';
     final String fullName = 'Héctor Zaragoza Cortés';
-    final String lastLoginAt = 'Última sesión: Sep 25, 2025 — 12:03h (CST)';
+    final String lastLoginAt = 'Sep 25, 2025';
+    final String lastLoginTime = '12:03h';
+    final String timezone = 'CST';
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Perfil de Usuario'),
+        title: const TranslatedText('profile_screen.title'),
         leading: IconButton(
           icon: Icon(Icons.arrow_back),
           onPressed: () {
@@ -47,8 +52,13 @@ class ProfileScreen extends StatelessWidget {
                   ),
                 ),
                 // * Last login at
-                Text(
-                  lastLoginAt,
+                TranslatedText(
+                  'profile_screen.last_session',
+                  values: {
+                    'date': lastLoginAt,
+                    'time': lastLoginTime,
+                    'timezone': timezone,
+                  },
                   style: TextStyle(
                     fontSize: 16,
                     fontWeight: FontWeight.w500,
@@ -58,7 +68,7 @@ class ProfileScreen extends StatelessWidget {
                 const SizedBox(height: 24),
                 // * Logout's button
                 CustomFilledIconButton(
-                  text: 'Cerrar Sesión',
+                  text: ref.watch(translationProvider('logout')),
                   icon: Icons.logout,
                   onPressed: () {
                     context.go(publicRoutes['loginEmail']!);
